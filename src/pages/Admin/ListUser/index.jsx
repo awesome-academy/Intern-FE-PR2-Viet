@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
-import { Pagination, Input, Button, Modal, Spin } from "antd";
+import { Pagination, Input, Button, Modal, Empty } from "antd";
 
 import { getListUser, deleteUser } from "../../../redux/actions";
 import { FaTrashAlt } from "react-icons/fa";
@@ -19,6 +19,7 @@ const ListUser = ({ deleteUser, getListUser, listUser, adminCreate, userEdit }) 
     const { t } = useTranslation();
 
     useEffect(() => {
+        document.title = "Vegist | Trang Quản lý người dùng";
         getListUser({
             page: current,
             limit: 10,
@@ -57,6 +58,14 @@ const ListUser = ({ deleteUser, getListUser, listUser, adminCreate, userEdit }) 
             onCancel() {},
         });
     }
+    const renderLocationProduct = () => {
+        const start = (current - 1) * 12 + 1;
+        let end;
+        if (listUser[0].length >= 12) {
+            end = (current - 1) * 12 + 12;
+        } else end = start + listUser[0].length - 1;
+        return `${start} - ${end}`;
+    };
 
     return (
         <>
@@ -88,34 +97,47 @@ const ListUser = ({ deleteUser, getListUser, listUser, adminCreate, userEdit }) 
                                 </tr>
                             </thead>
                             <tbody>
-                                {listUser[0]?.map((item, index) => (
-                                    <>
-                                        <tr>
-                                            <td>{index + 1}</td>
-                                            <td>{item.name}</td>
-                                            <td>{item.email}</td>
-                                            <td>{item.address}</td>
-                                            <td>{item.phone}</td>
-                                            <td>
-                                                <div>
-                                                    <ModalModify item={item} />
-                                                    <Button type="primary" onClick={() => confirm(item)}>
-                                                        <FaTrashAlt />
-                                                    </Button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </>
-                                ))}
+                                {listUser[0]?.length > 0 ? (
+                                    listUser[0]?.map((item, index) => (
+                                        <>
+                                            <tr>
+                                                <td>{index + 1}</td>
+                                                <td>{item.name}</td>
+                                                <td>{item.email}</td>
+                                                <td>{item.address}</td>
+                                                <td>{item.phone}</td>
+                                                <td>
+                                                    <div>
+                                                        <ModalModify item={item} />
+                                                        <Button type="primary" onClick={() => confirm(item)}>
+                                                            <FaTrashAlt />
+                                                        </Button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    ))
+                                ) : (
+                                    <Empty />
+                                )}
                             </tbody>
                         </table>
                     </div>
                     <div className="admin__listUser--pagination">
-                        <Pagination
-                            current={current}
-                            onChange={(page) => setCurrent(page)}
-                            total={listUser[1]}
-                        />
+                        {listUser[1] > 10 && (
+                            <section className="pagination">
+                                <div className="pagination__result">
+                                    {t("products.Showing")} {renderLocationProduct()} {t("products.of")}{" "}
+                                    {listUser[1]} {t("products.result")}
+                                </div>
+                                <Pagination
+                                    current={current}
+                                    onChange={(page) => setCurrent(page)}
+                                    total={listUser[1]}
+                                    defaultPageSize={10}
+                                />
+                            </section>
+                        )}
                     </div>
                 </div>
             </section>

@@ -110,6 +110,33 @@
         "lastName": {
             "max": "Tên không được vượt quá 20 kí tự !",
             "required": "Tên không được để trống !"
+        },
+        "name": {
+            "max": "Tên sản phẩm được vượt quá 50 kí tự !",
+            "required": "Tên sản phẩm không được để trống !"
+        },
+        "category": {
+            "required": "Dòng sản phẩm không được để trống !"
+        },
+        "tag": {
+            "required": "Thẻ tag không được để trống !"
+        },
+        "origin": {
+            "required": "Xuất sứ không được để trống !"
+        },
+        "size": {
+            "regex": "Kích cỡ tối thiểu là 1kg, tối đa 99kg !",
+            "required": "Kích cỡ không được để trống !"
+        },
+        "price": {
+            "regex": "Đơn giá tối thiểu là 10.000, tối đa là 99.000.000 !",
+            "required": "Đơn giá không được để trống !"
+        },
+        "image": {
+            "required": "Hãy chọn 4 ảnh !"
+        },
+        "Short description": {
+            "required": "Mô tả ngắn không được để trống !"
         }
     },
 
@@ -337,6 +364,28 @@
         },
         "listProduct": {
             "title": "DANH SÁCH SẢN PHẨM"
+        },
+        "products": {
+            "More new products": "Thêm mới sản phẩm",
+            "Enter product name": "Nhập tên sản phẩm",
+            "Product's name": "Tên sản phẩm",
+            "Product Line": "Dòng sản phẩm",
+            "Select product line": "Chọn dòng sản phẩm",
+            "Unit price": "Đơn giá",
+            "Enter unit price": "Nhập đơn giá...",
+            "New price": "Đơn giá mới",
+            "Enter new price": "Nhập đơn giá mới",
+            "Size": "Size",
+            "Select...": "Chọn...",
+            "Origin": "Xuất sứ",
+            "Tag": "Thẻ",
+            "Select tag": "Chọn thẻ",
+            "Image": "Ảnh",
+            "Short description": "Mô tả ngắn",
+            "Enter short description": "Nhập mô tả ngắn...",
+            "Describe": "Mô tả",
+            "Enter describe": "Nhập mô tả...",
+            "Add new": "Thêm mới"
         }
     }
 }

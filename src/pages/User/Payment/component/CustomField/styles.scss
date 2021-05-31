@@ -17,11 +17,6 @@
                 height: auto !important;
             }
         }
-
-        .text-danger {
-            color: $light-red;
-            font-size: 1.2rem;
-        }
     }
 }
 
@@ -45,4 +40,8 @@
 .ant-checkbox:hover .ant-checkbox-inner,
 .ant-checkbox-input:focus + .ant-checkbox-inner {
     border-color: $primary-color;
+}
+.text-danger {
+    color: $light-red;
+    font-size: 1.2rem;
 }

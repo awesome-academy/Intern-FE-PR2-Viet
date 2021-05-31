@@ -65,6 +65,7 @@ const Products = ({ getProducts, productsData, getTotalProducts, totalProduct })
     }, [filterProducts, currentPage]);
 
     useEffect(() => {
+        document.title = "Vegist | Trang Sản phẩm";
         getTotalProducts({
             category: filterProducts.category,
             price: filterProducts.price,
@@ -95,7 +96,7 @@ const Products = ({ getProducts, productsData, getTotalProducts, totalProduct })
     };
 
     return (
-        <div className="products">
+        <div className="products fadeIn">
             <Breadcrumb title="Collection" />
             <div className="container products__container">
                 <Row>
@@ -166,7 +167,7 @@ const Products = ({ getProducts, productsData, getTotalProducts, totalProduct })
                                     </Row>
                                 </div>
                             </section>
-                            {totalProduct && (
+                            {totalProduct.length > 0 && (
                                 <section className="pagination">
                                     <div className="pagination__result">
                                         {t("products.Showing")} {renderLocationProduct()} {t("products.of")}{" "}

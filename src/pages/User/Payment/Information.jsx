@@ -17,6 +17,7 @@ const Information = ({ getInfo, infoUser, cartData, createBill }) => {
     const [valueSelect, setValueSelect] = useState("vi");
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
     useEffect(() => {
+        document.title = "Vegist | Thông tin";
         getInfo({ email: user.email });
     }, []);
 
@@ -36,7 +37,7 @@ const Information = ({ getInfo, infoUser, cartData, createBill }) => {
     };
 
     return (
-        <div className="payment-page">
+        <div className="payment-page fadeIn">
             <div className="container payment__container">
                 <section className="information">
                     <h1 className="information__title">vegina-store</h1>

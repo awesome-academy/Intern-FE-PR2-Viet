@@ -37,7 +37,7 @@ function Home({ getProductHome, productHome, getCategory, categoryData }) {
     }, []);
 
     return (
-        <div className="home">
+        <div className="home fadeIn">
             <section className="home__slide">
                 <Slide data={dataSlide} type="slideShow"></Slide>
             </section>

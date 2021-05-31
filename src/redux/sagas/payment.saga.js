@@ -50,7 +50,7 @@ function* updateBillSaga(action) {
         if (type === "success") {
             [response] = yield all([
                 axios.patch(`${apiURL}/payments/${id}`, { ...other }),
-                axios.delete(`${apiURL}/carts/${cartId}}`),
+                axios.delete(`${apiURL}/carts/${cartId}`),
             ]);
         } else
             response = axios.patch(`${apiURL}/payments/${id}`, {

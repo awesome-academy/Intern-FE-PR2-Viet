@@ -55,8 +55,12 @@ const ProductItem = ({ data, addCart }) => {
         <div className="product-item">
             <div className="product-item__img">
                 <a href="" className="rotate-img">
-                    <img src={img[0]} alt="anh" />
-                    <img src={img[1]} alt="ANH" />
+                    {img && (
+                        <>
+                            <img src={img[0]} alt="anh" />
+                            <img src={img[1]} alt="ANH" />
+                        </>
+                    )}
                 </a>
                 <div className="product-item__widget">
                     <span className="icon icon-round product-item__widget-icon">

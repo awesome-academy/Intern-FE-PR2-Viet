@@ -1,5 +1,6 @@
 import { put, takeEvery } from "@redux-saga/core/effects";
 import axios from "axios";
+import { all } from "redux-saga/effects";
 
 import {
     GET_CATEGORY,
@@ -35,14 +36,16 @@ function* getCategorySaga() {
 
 function* getSidebarSaga() {
     try {
-        const responseCategory = yield axios({
-            method: "GET",
-            url: `${apiURL}/Category`,
-        });
-        const responseTags = yield axios({
-            method: "GET",
-            url: `${apiURL}/tags`,
-        });
+        const [responseCategory, responseTags] = yield all([
+            axios({
+                method: "GET",
+                url: `${apiURL}/Category`,
+            }),
+            axios({
+                method: "GET",
+                url: `${apiURL}/tags`,
+            }),
+        ]);
 
         const data = {
             categoryData: responseCategory.data,
