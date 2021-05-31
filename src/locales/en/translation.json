@@ -1,0 +1,96 @@
+{
+    "header_text":{
+        "free":"Free shipping",
+        "order":"Orders From All item"
+    },
+    "language":{
+        "name":"Language",
+        "english":"English",
+        "vietnam":"Vietnamese"
+    },
+    "Home":"Home",
+    "Shop":"Shop",
+    "Collection":"Collection",
+    "About Us":"About Us",
+    "Faq's":"Faq's",
+    "Blog":"Blog",
+    "Account":"Account",
+    "Register":"Register",
+    "Login":"Login",
+    "Hotline":"Hotline",
+    "Free delivery":"Free delivery",
+    "Cash On Delivery":"Cash On Delivery",
+    "30 Days Returns":"30 Days Returns",
+    "Online Support":"Online Support",
+    "Address":"Address",
+    "Contact":"Contact",
+    "Categories":{
+        "Top_Categories":{
+            "name":"Top Categories",
+            "Fruits":"Fruits",
+            "Fast Foods":"Fast Foods",
+            "Vegetables":"Vegetables",
+            "Salads":"Salads",
+            "Bestseller":"Bestseller"
+        },
+        "Services":{
+            "name":"Services",
+            "About Vegist":"About Vegist",
+            "Faq's":"Faq's",
+            "Contact Us":"Contact Us",
+            "News":"News",
+            "Sitemap":"Sitemap"
+            
+        },
+        "Privacy_Terms":{
+            "name":"Privacy & Terms",
+            "Payment policy":"Payment policy",
+            "Privacy policy":"Privacy policy",
+            "Return policy":"Return policy",
+            "shipping policy":"shipping policy",
+            "Terms & Conditions":"Terms & Conditions"
+        },
+        "My_Account":{
+            "name":"My Account",
+            "My Account":"My Account",
+            "My Cart":"My Cart",
+            "Order History":"Order History",
+            "My Wishlist":"My Wishlist",
+            "My Address":"My Address"
+        }
+       
+    },
+    "register":{
+        "create":"Create Account",
+        "text":"Please register below account detail",
+        "button register":"CREATE ACCOUNT",
+        "already":"Already an account holder ?",
+        "button login":"Log in"
+    },
+    "login":{
+        "create":"Login",
+        "text":"Please login below account detail",
+        "button register":"SIGN IN",
+        "already":"Don't have account ?",
+        "button login":"Create account",
+        "forgot":"Forgot your password"
+    },
+    "Terms & Conditions":{
+        "title":"Terms & Conditions",
+        "content":"Your privacy and security are important to us. For more information on how we use your data read our",
+        "privacy":"privacy policy"
+    },
+    "validate":{
+        "first":"First name can't be blank !",
+        "last":"Last name can't be blank !",
+        "email":{
+            "required":"Email can't be blank !",
+            "regex":"Invalid email field !"
+        },
+        "password":{
+            "required":"Password can't be blank !",
+            "regex":"Password must not be less than 8 characters !"
+        }
+    }
+  
+}

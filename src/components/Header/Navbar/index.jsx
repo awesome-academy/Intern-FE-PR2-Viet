@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Select, Drawer } from "antd";
+import { useTranslation } from 'react-i18next';
+
 
 import history from "../../../until/history";
 
@@ -110,10 +112,9 @@ const navbarData = [
 ];
 
 const Navbar = ({ setShowNavbar, showNavbar }) => {
+    const { t } = useTranslation();
     const [isActive, setIsActive] = useState(1);
     const [isActiveMobile, setIsActiveMobile] = useState({});
-    console.log("file: index.jsx > line 115 > Navbar > isActiveMobile", isActiveMobile);
-
     const handelNavbarClick = (id, path) => {
         setIsActive(id);
         // history.push(path)
@@ -141,10 +142,10 @@ const Navbar = ({ setShowNavbar, showNavbar }) => {
                 >
                     {" "}
                     {!item.dropdownData ? (
-                        item.name
+                       t(item.name)
                     ) : (
                         <>
-                            {item.name} <BsChevronDown />
+                           { t(item.name)} <BsChevronDown />
                         </>
                     )}
                 </a>
@@ -218,7 +219,7 @@ const Navbar = ({ setShowNavbar, showNavbar }) => {
                         alt="hotline"
                     ></img>
                     <div className="hot-line__text">
-                        <p>Hotline:</p>
+                        <p>{t("Hotline")}:</p>
                         <p>0123 456 789</p>
                     </div>
                 </div>
