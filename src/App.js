@@ -10,12 +10,16 @@ import DefaultLayout from "./layouts/DefaultLayout";
 
 import Home from "./pages/User/Home";
 
+import Login from "./pages/User/Login";
+import Register from "./pages/User/Register";
 function App() {
     return (
         <div className="App">
             <Router history={history}>
                 <Switch>
                     <DefaultLayout exact path="/" component={Home} />
+                    <DefaultLayout exact path="/account/login" component={Login} />
+                    <DefaultLayout exact path="/account/register" component={Register} />
                 </Switch>
             </Router>
         </div>
