@@ -6,6 +6,9 @@ import {
     CREATE_BILL,
     CREATE_BILL_FAIL,
     CREATE_BILL_SUCCESS,
+    GET_BILL_TEMP,
+    GET_BILL_TEMP_FAIL,
+    GET_BILL_TEMP_SUCCESS,
     UPDATE_SUCCESS_BILL,
     UPDATE_SUCCESS_BILL_FAIL,
     UPDATE_SUCCESS_BILL_SUCCESS,
@@ -59,8 +62,25 @@ function* updateSuccessBillSaga(action) {
         });
     }
 }
+function* getBillTempSaga(action) {
+    try {
+        const { user } = action.payload;
+        const response = yield axios.get(`${apiURL}/payments?user=${user}&isPayment=false`);
 
+        const data = response.data;
+        yield put({
+            type: GET_BILL_TEMP_SUCCESS,
+            payload: data[0],
+        });
+    } catch (error) {
+        yield put({
+            type: GET_BILL_TEMP_FAIL,
+            payload: error,
+        });
+    }
+}
 export default function* paymentSaga() {
     yield takeEvery(CREATE_BILL, createBill);
     yield takeEvery(UPDATE_SUCCESS_BILL, updateSuccessBillSaga);
+    yield takeEvery(GET_BILL_TEMP, getBillTempSaga);
 }

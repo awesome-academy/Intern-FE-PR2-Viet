@@ -1,6 +1,8 @@
 import {
     CREATE_BILL_FAIL,
     CREATE_BILL_SUCCESS,
+    GET_BILL_TEMP_FAIL,
+    GET_BILL_TEMP_SUCCESS,
     UPDATE_SUCCESS_BILL_FAIL,
     UPDATE_SUCCESS_BILL_SUCCESS,
 } from "../constants";
@@ -8,6 +10,7 @@ import {
 const initialState = {
     billData: {},
     billSuccessData: {},
+    billTempData: {},
 };
 
 export default function paymentReducer(state = initialState, action) {
@@ -26,6 +29,14 @@ export default function paymentReducer(state = initialState, action) {
                 billSuccessData: { ...action.payload },
             };
         case UPDATE_SUCCESS_BILL_FAIL: {
+            return state;
+        }
+        case GET_BILL_TEMP_SUCCESS:
+            return {
+                ...state,
+                billTempData: { ...action.payload },
+            };
+        case GET_BILL_TEMP_FAIL: {
             return state;
         }
         default:

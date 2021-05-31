@@ -50,6 +50,7 @@ body {
     padding-right: 2rem;
 }
 .button {
+    position: relative;
     border: none;
     outline: none !important;
     background-color: transparent;
@@ -98,6 +99,23 @@ body {
     &:hover {
         background-color: unset;
         color: $black;
+    }
+}
+.button-animation--1 {
+    overflow: hidden;
+    border: 2px solid $primary-color;
+    &::before {
+        content: "";
+        @include absolute(0, "", "", -100%);
+        @include width-height(100%);
+        @include transition(all, 0.4s, ease);
+        z-index: 3;
+        background-color: $primary-color;
+    }
+    &:hover {
+        &::before {
+            @include absolute(0, "", "", 0);
+        }
     }
 }
 .button-transparent {
