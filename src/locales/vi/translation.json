@@ -119,21 +119,6 @@
             "sub": "Và nhận phiếu giảm giá 20% cho lần mua sắm đầu tiên",
             "placeholder": "Nhập địa chỉ email của bạn",
             "subscribe": "Đăng ký"
-        },
-        "category": {
-            "Baker's Rack": "Baker's Rack",
-            "Breakfast": "Bữa ăn sáng",
-            "Dairy & Chesse": "Sữa & Phô mai",
-            "Dinner": "Bữa tối",
-            "Featured Product": "Sản phẩm nổi bật",
-            "Fresh Fruits ": "Trái cây tươi ",
-            "Fresh Meat ": "Thịt tươi sống ",
-            "Fresh Vegetable": "Rau quả tươi",
-            "Green Seafood": "Hải sản xanh",
-            "New Product": "Sản phẩm mới",
-            "Sea & Fish": "Cá biển",
-            "Organic Juice ": "Nước trái cây ",
-            "Organic Dryfruit": "Quả khô hữu cơ"
         }
     },
     "category": {
@@ -142,14 +127,27 @@
         "Dairy & Chesse": "Sữa & Phô mai",
         "Dinner": "Bữa tối",
         "Featured Product": "Sản phẩm nổi bật",
-        "Fresh Fruits ": "Trái cây tươi ",
-        "Fresh Meat ": "Thịt tươi sống ",
+        "Fresh Fruits": "Trái cây tươi ",
+        "Fresh Meat": "Thịt tươi sống ",
         "Fresh Vegetable": "Rau quả tươi",
         "Green Seafood": "Hải sản xanh",
         "New Product": "Sản phẩm mới",
         "Sea & Fish": "Cá biển",
         "Organic Juice ": "Nước trái cây ",
         "Organic Dryfruit": "Quả khô hữu cơ"
+    },
+    "tags": {
+        "Almond": "Hạnh nhân",
+        "banana": "chuối",
+        "bitrrot": "cà rốt",
+        "blackberry": "blackberry",
+        "chikoo": "chikoo",
+        "guava": "Ổi",
+        "juice": "Nước ép",
+        "minirrot": "minirrot",
+        "mussel": "trai",
+        "onion": "củ hành",
+        "organic-food": "thực phẩm hữu cơ"
     },
     "products": {
         "sort by": "Sắp xếp theo",
@@ -164,6 +162,7 @@
         "Showing": "Hiển thị",
         "of": "trên",
         "result": "kết quả",
-        "placeholder": "Chọn một loại"
+        "placeholder": "Chọn một loại",
+        "Anything...": "Bất cứ thứ gì..."
     }
 }

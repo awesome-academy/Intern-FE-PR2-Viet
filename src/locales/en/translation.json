@@ -119,21 +119,6 @@
             "sub": "And Receive 20% Off Coupon For First Shopping",
             "placeholder": "Enter Your Email Address",
             "subscribe": "Subscribe"
-        },
-        "category": {
-            "Baker's Rack": "Baker's Rack",
-            "Breakfast": "Breakfast",
-            "Dairy & Chesse": "Dairy & Chesse",
-            "Dinner": "Dinner",
-            "Featured Product": "Featured Product",
-            "Fresh Fruits ": "Fresh Fruits ",
-            "Fresh Meat ": "Fresh Meat ",
-            "Fresh Vegetable": "Fresh Vegetable",
-            "Green Seafood": "Green Seafood",
-            "New Product": "New Product",
-            "Sea & Fish": "Sea & Fish",
-            "Organic Juice ": "Organic Juice ",
-            "Organic Dryfruit": "Organic Dryfruit"
         }
     },
     "category": {
@@ -142,14 +127,28 @@
         "Dairy & Chesse": "Dairy & Chesse",
         "Dinner": "Dinner",
         "Featured Product": "Featured Product",
-        "Fresh Fruits ": "Fresh Fruits ",
-        "Fresh Meat ": "Fresh Meat ",
+        "Fresh Fruits": "Fresh Fruits ",
+        "Fresh Meat": "Fresh Meat ",
         "Fresh Vegetable": "Fresh Vegetable",
         "Green Seafood": "Green Seafood",
         "New Product": "New Product",
         "Sea & Fish": "Sea & Fish",
-        "Organic Juice ": "Organic Juice ",
+        "Organic Juice": "Organic Juice ",
         "Organic Dryfruit": "Organic Dryfruit"
+    },
+
+    "tags": {
+        "Almond": "Almond",
+        "banana": "banana",
+        "bitrrot": "bitrrot",
+        "blackberry": "blackberry",
+        "chikoo": "chikoo",
+        "guava": "guava",
+        "juice": "juice",
+        "minirrot": "minirrot",
+        "mussel": "mussel",
+        "onion": "onion",
+        "organic-food": "organic-food"
     },
     "products": {
         "sort by": "Sort by",
@@ -164,6 +163,7 @@
         "Showing": "Showing",
         "of": "of",
         "result": "result",
-        "placeholder": "Select a type"
+        "placeholder": "Select a type",
+        "Anything...": "Anything..."
     }
 }

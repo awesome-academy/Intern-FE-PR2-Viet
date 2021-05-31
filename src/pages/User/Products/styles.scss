@@ -5,7 +5,13 @@
     &__container {
         padding: 7rem 0;
     }
-
+    .col-sm-100 {
+        @include respond-to("md") {
+            width: 100% !important;
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+        }
+    }
     .breadcrumb {
         &__container {
             position: relative;
@@ -90,6 +96,16 @@
             &--text {
                 padding-right: 2rem;
                 font-weight: 500;
+            }
+        }
+    }
+
+    .list {
+        min-height: 55rem;
+        @include respond-to("xs") {
+            .ant-col {
+                flex: 0 0 100%;
+                max-width: 100%;
             }
         }
     }
