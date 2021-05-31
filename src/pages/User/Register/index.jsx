@@ -3,11 +3,18 @@ import { Form, Input, Button, Row, Col } from "antd";
 import history from "../../../until/history";
 import { useTranslation } from "react-i18next";
 
+import { createAccount } from "../../../redux/actions";
+import { connect } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./style.scss";
-const Register = () => {
+
+const Register = (prop) => {
   const { t } = useTranslation();
+  const { createAccount, userList, user } = prop;
   const [form] = Form.useForm();
   const handleSubmitForm = (values) => {
+    createAccount(values);
   };
   return (
     <>
@@ -23,8 +30,8 @@ const Register = () => {
                 scrollToFirstError
               >
                 <div className="register__title">
-                <h2>{t("register.create")}</h2>
-                <p>{t("register.text")}</p>
+                  <h2>{t("register.create")}</h2>
+                  <p>{t("register.text")}</p>
                 </div>
                 <Form.Item
                   name="first"
@@ -69,13 +76,13 @@ const Register = () => {
                   name="password"
                   rules={[
                     {
-                    min: 8,
-                    message: t("validate.password.regex"),
+                      min: 8,
+                      message: t("validate.password.regex"),
                     },
                     {
-                    required: true,
+                      required: true,
                       message: t("validate.password.required"),
-                    }
+                    },
                   ]}
                   hasFeedback
                 >
@@ -90,28 +97,40 @@ const Register = () => {
             </Col>
             <Col lg={7} md={10} xs={24} sm={16}>
               <div className="register__right">
-                <p className="register__right--title">
-                  {t("register.already")}
-                </p>
-                <Button onClick={()=>history.push("/login")} type="ghost">{t("register.button login")}</Button>
-              <div className="term-privacy">
-                <p>
-                *<span>{t("Terms & Conditions.title")}</span>
-                </p>
-                <p>
-                  {t("Terms & Conditions.content")}
-                <span>
-                 {t("Terms & Conditions.privacy")}
-                </span>
-                </p>
-              </div>
+                <p className="register__right--title">{t("register.already")}</p>
+                <Button onClick={() => history.push("/login")} type="ghost">
+                  {t("register.button login")}
+                </Button>
+                <div className="term-privacy">
+                  <p>
+                    *<span>{t("Terms & Conditions.title")}</span>
+                  </p>
+                  <p>
+                    {t("Terms & Conditions.content")}
+                    <span>{t("Terms & Conditions.privacy")}</span>
+                  </p>
+                </div>
               </div>
             </Col>
           </Row>
         </div>
       </section>
+      <ToastContainer />
     </>
   );
 };
 
-export default Register;
+const mapStateToProps = (state) => {
+  const { user, userList } = state.accountReducer;
+  return {
+    user,
+    userList,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createAccount: (params) => dispatch(createAccount(params)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
