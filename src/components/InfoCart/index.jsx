@@ -1,0 +1,97 @@
+import React, { useEffect, useState } from "react";
+import { Input } from "antd";
+import "./styles.scss";
+import { connect } from "react-redux";
+import { getCartData } from "../../redux/actions";
+import { useLocation } from "react-router-dom";
+import "./styles.scss";
+
+const InfoCart = ({ getCartData, cartData }) => {
+    const location = useLocation();
+    const [infoUser, setInfoUser] = useState(JSON.parse(localStorage.getItem("profile")));
+    useEffect(() => {
+        getCartData({ user: infoUser.email });
+    }, []);
+
+    const renderCartData = (cartData) => {
+        return cartData.map((item, index) => (
+            <tr className="infoCart__cart--item">
+                <td className="infoCart__cart--img">
+                    <img src={item.img[0]} alt="anh"></img>
+                    <span className="infoCart__cart--amount">{item.amount}</span>
+                </td>
+                <td className="infoCart__cart--name">
+                    <h5>{item.name}</h5>
+                    {item.size && <p>{item.size}</p>}
+                </td>
+                <td className="infoCart__cart--price">${(item.amount * item.price).toLocaleString()} VND</td>
+            </tr>
+        ));
+    };
+
+    const handleCalculateToTal = (cartData) => {
+        let total = 0;
+        cartData.forEach((element) => {
+            total = total + parseInt(element.price * element.amount);
+        });
+
+        return total;
+    };
+    return (
+        <section className="infoCart">
+            <div className=" infoCart__container">
+                <table className="infoCart__cart">{renderCartData(cartData)}</table>
+                <div className="infoCart__discount">
+                    <form>
+                        <Input className="input" type="text" placeholder="Discount code"></Input>
+                        <button className="button" type="button">
+                            Apply
+                        </button>
+                    </form>
+                </div>
+                <div className="infoCart__price">
+                    <div className="infoCart__price--item">
+                        <h4>Subtotal</h4>
+                        <p>{handleCalculateToTal(cartData).toLocaleString()}</p>
+                    </div>
+                    <div className="infoCart__price--item">
+                        <h4>Shipping</h4>
+                        <p>
+                            {location.pathname === "/payment"
+                                ? parseInt(20000).toLocaleString()
+                                : "Calculated at next step"}
+                        </p>
+                    </div>
+                    <div className="infoCart__price--total">
+                        <h4>Total</h4>
+                        <p>
+                            VND{" "}
+                            <span>
+                                $
+                                {(
+                                    handleCalculateToTal(cartData) +
+                                    (location.pathname === "/payment" ? 20000 : 0)
+                                ).toLocaleString()}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const mapStateToProps = (state) => {
+    const { cartData } = state.cartReducer;
+
+    return {
+        cartData,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCartData: (params) => dispatch(getCartData(params)),
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(InfoCart);
