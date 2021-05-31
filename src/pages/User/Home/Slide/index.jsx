@@ -5,29 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductItem from "../../../../components/ProductItem";
 import "./style.scss";
 import { Col, Row } from "antd";
+import useWindowDimensions from "../../../../until/width";
 
 const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
-    function getWindowDimensions() {
-        const { innerWidth: width } = window;
-        return {
-            width,
-        };
-    }
-
-    function useWindowDimensions() {
-        const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-        useEffect(() => {
-            function handleResize() {
-                setWindowDimensions(getWindowDimensions());
-            }
-
-            window.addEventListener("resize", handleResize);
-            return () => window.removeEventListener("resize", handleResize);
-        }, []);
-
-        return windowDimensions;
-    }
     const { width } = useWindowDimensions();
 
     const slidesToShow = () => {

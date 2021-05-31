@@ -3,6 +3,7 @@
 
 .product-item {
     @include transition(all, 0.3s, linear);
+
     &__img {
         position: relative;
         .rotate-img {
@@ -83,14 +84,16 @@
         font-size: 1.6rem;
     }
     &__price {
+        margin-top: auto;
         &--new {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 600;
             padding-right: 1rem;
         }
         &--old {
             color: #999;
             text-decoration: line-through;
+            font-size: 1.3rem;
         }
     }
     &:hover {

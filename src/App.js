@@ -12,12 +12,15 @@ import Home from "./pages/User/Home";
 
 import Login from "./pages/User/Login";
 import Register from "./pages/User/Register";
+import Products from "./pages/User/Products";
 function App() {
     return (
         <div className="App">
             <Router history={history}>
                 <Switch>
                     <DefaultLayout exact path="/" component={Home} />
+                    <DefaultLayout exact path="/products" component={Products} />
+                    <DefaultLayout exact path="/products/:collection" component={Products} />
                     <DefaultLayout exact path="/login" component={Login} />
                     <DefaultLayout exact path="/register" component={Register} />
                 </Switch>
