@@ -15,7 +15,7 @@ const InfoCart = ({ getCartData, cartData }) => {
     }, []);
 
     const renderCartData = (cartData) => {
-        return cartData.map((item, index) => (
+        return cartData?.map((item, index) => (
             <tr className="infoCart__cart--item">
                 <td className="infoCart__cart--img">
                     <img src={item.img[0]} alt="anh"></img>
@@ -32,7 +32,7 @@ const InfoCart = ({ getCartData, cartData }) => {
 
     const handleCalculateToTal = (cartData) => {
         let total = 0;
-        cartData.forEach((element) => {
+        cartData?.forEach((element) => {
             total = total + parseInt(element.price * element.amount);
         });
 
@@ -41,7 +41,7 @@ const InfoCart = ({ getCartData, cartData }) => {
     return (
         <section className="infoCart">
             <div className=" infoCart__container">
-                <table className="infoCart__cart">{renderCartData(cartData)}</table>
+                <table className="infoCart__cart">{renderCartData(cartData?.cartData)}</table>
                 <div className="infoCart__discount">
                     <form>
                         <Input
@@ -57,7 +57,7 @@ const InfoCart = ({ getCartData, cartData }) => {
                 <div className="infoCart__price">
                     <div className="infoCart__price--item">
                         <h4>{t("infoCart.Subtotal")}</h4>
-                        <p>{handleCalculateToTal(cartData).toLocaleString()}</p>
+                        <p>{handleCalculateToTal(cartData?.cartData).toLocaleString()}</p>
                     </div>
                     <div className="infoCart__price--item">
                         <h4>{t("infoCart.Shipping cost")}</h4>
@@ -74,7 +74,7 @@ const InfoCart = ({ getCartData, cartData }) => {
                             <span>
                                 $
                                 {(
-                                    handleCalculateToTal(cartData) +
+                                    handleCalculateToTal(cartData?.cartData) +
                                     (location.pathname === "/shipping" || location.pathname === "/payment"
                                         ? 20000
                                         : 0)

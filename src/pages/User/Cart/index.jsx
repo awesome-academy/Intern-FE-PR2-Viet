@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useLocation } from "react-router-dom";
 import history from "../../../until/history";
 import Breadcrumb from "../../../components/Breadcrumb";
 import { Col, Row, Select, Input, Modal } from "antd";
 import CartItem from "./CartItem";
 import { useTranslation } from "react-i18next";
-
 import VietNam from "../../../assets/images/vietnam.svg";
 import English from "../../../assets/images/english.svg";
 import "./styles.scss";
 import { addCart, getCartData } from "../../../redux/actions";
 
 const Cart = ({ addCartData, cartData, addCart, getCartData }) => {
-    const [totalPrice, setTotalPrice] = useState(0);
     const { t } = useTranslation();
-    const location = useLocation();
     const [infoUser, setInfoUser] = useState(JSON.parse(localStorage.getItem("profile")));
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -27,7 +23,7 @@ const Cart = ({ addCartData, cartData, addCart, getCartData }) => {
 
     const handleCalculateToTal = () => {
         let total = 0;
-        cartData.forEach((element) => {
+        cartData?.cartData?.forEach((element) => {
             total = total + parseInt(element.price * element.amount);
         });
 
@@ -46,14 +42,14 @@ const Cart = ({ addCartData, cartData, addCart, getCartData }) => {
         <div className="cart">
             <Breadcrumb title="Cart" />
             <div className="container cart__container">
-                {cartData.length ? (
+                {cartData?.cartData?.length ? (
                     <Row gutter={[32, 24]} justify="end">
                         <Col xl={17} lg={16} xs={24}>
                             <section className="cart__product">
                                 <div className="cart__product--title">
                                     <h2>{t("cart.My Cart")}:</h2>
                                     <p>
-                                        {cartData.reduce(
+                                        {cartData?.cartData?.reduce(
                                             (total, currentValue) => {
                                                 return parseInt(total) + currentValue.amount;
                                             },
@@ -64,7 +60,7 @@ const Cart = ({ addCartData, cartData, addCart, getCartData }) => {
                                 </div>
                                 <table className="cart__table">
                                     <tbody className="cart__product--list">
-                                        {cartData.map((item) => (
+                                        {cartData?.cartData?.map((item) => (
                                             <CartItem
                                                 data={item}
                                                 handleDeleteCart={handleDeleteCart}
