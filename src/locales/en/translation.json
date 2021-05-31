@@ -289,7 +289,10 @@
             "Return to information": "Return to information"
         },
         "payment": {
+            "Method": "Method",
             "Payment": "Payment",
+            "All transactions are secure and encrypted": "All transactions are secure and encrypted.",
+            "This store can only pay with COD": "This store can only pay with COD",
             "Credit card": "Credit card",
             "Cash on Delivery (COD)": "Cash on Delivery (COD)",
             "Billing address": "Billing address",
@@ -308,5 +311,23 @@
         "Shipping cost": "Shipping cost",
         "Calculated at next step": "Calculated at next step",
         "Total": "Total"
+    },
+    "success": {
+        "Order Success": "Order Success",
+        "Thanks": "Thank you for giving Vegist the opportunity to serve. Please follow by clicking",
+        "Order Management": "Order Management",
+        "Order": "Order",
+        "Receiver": "Receiver",
+        "Delivery address": "Delivery address",
+        "Staff will call to confirm before delivery": "Staff will call to confirm before delivery",
+        "Estimated delivery time": "Estimated delivery time",
+        "day": "day",
+        "Total amount": "Total amount",
+        "Payment type": "Payment type",
+        "Order Cancellation": "Order Cancellation",
+        "When you need help, please call": "When you need help, please call",
+        "Products purchased": "Products purchased",
+        "amount": "Amount",
+        "return to home page": "return to home page"
     }
 }

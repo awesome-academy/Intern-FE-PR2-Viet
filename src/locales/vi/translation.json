@@ -286,7 +286,10 @@
             "Return to information": "Quay lại thông tin"
         },
         "payment": {
+            "Method": "Kiểu",
             "Payment": "Thanh toán",
+            "All transactions are secure and encrypted": "Tất cả các giao dịch đều được bảo mật và mã hóa.",
+            "This store can only pay with COD": "Cửa hàng này chỉ có thể thanh toán bằng COD",
             "Credit card": "Thẻ tín dụng",
             "Cash on Delivery (COD)": "Thu tiền khi giao hàng (COD)",
             "Billing address": "Địa chỉ thanh toán",
@@ -305,5 +308,23 @@
         "Shipping cost": "Giá vận chuyển",
         "Calculated at next step": "Tính toán ở bước tiếp theo",
         "Total": "Tổng cộng"
+    },
+    "success": {
+        "Order Success": "Đặt hàng thành công",
+        "Thanks": "Cảm ơn bạn đã cho Vegist cơ hội được phục vụ. Vui lòng theo dõi bằng cách nhấp vào",
+        "Order Management": "Quản lý đơn hàng",
+        "Order": "Đơn hàng",
+        "Receiver": "Người nhận",
+        "Delivery address": "Địa chỉ nhận hàng",
+        "Staff will call to confirm before delivery": "Nhân viên sẽ gọi xác nhận trước khi giao",
+        "Estimated delivery time": "Thời gian giao hàng dự kiến",
+        "day": "ngày",
+        "Total amount": "Tổng tiền",
+        "Payment type": "Hình thức thanh toán",
+        "Order Cancellation": "Huỷ đơn hàng",
+        "When you need help, please call": "Khi cần hỗ trợ, vui lòng gọi",
+        "Products purchased": "Sản phẩm đã mua",
+        "amount": "Số lượng",
+        "return to home page": "Về trang chủ"
     }
 }
