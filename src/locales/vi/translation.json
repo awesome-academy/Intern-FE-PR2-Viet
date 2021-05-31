@@ -1,96 +1,141 @@
 {
-    "header_text":{
-        "free":"Giao hàng miễn phí",
-        "order":"Đặt hàng từ tất cả mặt hàng"
+    "header_text": {
+        "free": "Giao hàng miễn phí",
+        "order": "Đặt hàng từ tất cả mặt hàng"
     },
-    "language":{
-        "name":"Ngôn ngữ",
-        "english":"Tiếng Anh",
-        "vietnam":"Tiếng Việt"
+    "language": {
+        "name": "Ngôn ngữ",
+        "english": "Tiếng Anh",
+        "vietnam": "Tiếng Việt"
     },
-    "Home":"Trang chủ",
-    "Shop":"Cửa hàng",
-    "Collection":"Bộ sưu tập",
-    "About Us":"Về chúng tôi",
-    "Faq's":"Hỏi đáp",
-    "Blog":"Nhật ký",
-    "Account":"Tài khoản",
-    "Register":"Đăng ký",
-    "Login":"Đăng nhập",
-    "Hotline":"Đường dây nóng",
-    "Free delivery":"Giao hàng miễn phí",
-    "Cash On Delivery":"Thanh toán khi nhận hàng",
-    "30 Days Returns":"Đổi trả trong 30 ngày",
-    "Online Support":"Hỗ trợ trực tuyến",
-    "Address":"Địa chỉ",
-    "Contact":"Liên hệ",
-    "Categories":{
-        "Top_Categories":{
-            "name":"Danh mục hàng đầu",
-            "Fruits":"Trái cây",
-            "Fast Foods":"Thức ăn nhanh",
-            "Vegetables":"Rau củ",
-            "Salads":"Salads",
-            "Bestseller":"Siêu giảm giá"
+    "Home": "Trang chủ",
+    "Shop": "Cửa hàng",
+    "Collection": "Bộ sưu tập",
+    "About Us": "Về chúng tôi",
+    "Faq's": "Hỏi đáp",
+    "Blog": "Nhật ký",
+    "Account": "Tài khoản",
+    "Register": "Đăng ký",
+    "Login": "Đăng nhập",
+    "Hotline": "Đường dây nóng",
+    "Free delivery": "Giao hàng miễn phí",
+    "Cash On Delivery": "Thanh toán khi nhận hàng",
+    "30 Days Returns": "Đổi trả trong 30 ngày",
+    "Online Support": "Hỗ trợ trực tuyến",
+    "Address": "Địa chỉ",
+    "Contact": "Liên hệ",
+    "Categories": {
+        "Top_Categories": {
+            "name": "Danh mục hàng đầu",
+            "Fruits": "Trái cây",
+            "Fast Foods": "Thức ăn nhanh",
+            "Vegetables": "Rau củ",
+            "Salads": "Salads",
+            "Bestseller": "Siêu giảm giá"
         },
-        "Services":{
-            "name":"Dịch vụ",
-            "About Vegist":"Giới thiệu về Vvegist",
-            "Faq's":"Câu hỏi thường gặp",
-            "Contact Us":"Liên hệ với chúng tôi",
-            "News":"Tin tức",
-            "Sitemap":"Bản đồ"
-            
+        "Services": {
+            "name": "Dịch vụ",
+            "About Vegist": "Giới thiệu về Vvegist",
+            "Faq's": "Câu hỏi thường gặp",
+            "Contact Us": "Liên hệ với chúng tôi",
+            "News": "Tin tức",
+            "Sitemap": "Bản đồ"
         },
-        "Privacy_Terms":{
-            "name":"Điều khoản & quyền riêng tư",
-            "Payment policy":"Chính sách thanh toán",
-            "Privacy policy":"Chính sách bảo mật",
-            "Return policy":"Chính sách hoàn trả",
-            "shipping policy":"Chính sách mua sắm",
-            "Terms & Conditions":"Điều khoản và điều kiện"
+        "Privacy_Terms": {
+            "name": "Điều khoản & quyền riêng tư",
+            "Payment policy": "Chính sách thanh toán",
+            "Privacy policy": "Chính sách bảo mật",
+            "Return policy": "Chính sách hoàn trả",
+            "shipping policy": "Chính sách mua sắm",
+            "Terms & Conditions": "Điều khoản và điều kiện"
         },
-        "My_Account":{
-            "name":"Tài khoản của tôi",
-            "My Account":"Tài khoản của tôi",
-            "My Cart":"Giỏ hàng của tôi",
-            "Order History":"Lịch sử đặt hàng",
-            "My Wishlist":"Yêu thích của tôi",
-            "My Address":"Địa chỉ của tôi"
+        "My_Account": {
+            "name": "Tài khoản của tôi",
+            "My Account": "Tài khoản của tôi",
+            "My Cart": "Giỏ hàng của tôi",
+            "Order History": "Lịch sử đặt hàng",
+            "My Wishlist": "Yêu thích của tôi",
+            "My Address": "Địa chỉ của tôi"
         }
-      
     },
-    "register":{
-        "create":"Tạo tài khoản",
-        "text":"Vui lòng đăng ký chi tiết tài khoản bên dưới",
-        "button register":"TẠO TÀI KHOẢN",
-        "already":"Đã có tài khoản ?",
-        "button login":"Đăng nhập"
+    "register": {
+        "create": "Tạo tài khoản",
+        "text": "Vui lòng đăng ký chi tiết tài khoản bên dưới",
+        "button register": "TẠO TÀI KHOẢN",
+        "already": "Đã có tài khoản ?",
+        "button login": "Đăng nhập"
     },
-    "login":{
-        "create":"Đăng nhập",
-        "text":"Vui lòng đăng nhập chi tiết tài khoản",
-        "button register":"ĐĂNG NHẬP",
-        "already":"Chưa có tài khoản ?",
-        "button login":"Tạo tài khoản",
-        "forgot":"Bạn đã quên mật khẩu ?"
+    "login": {
+        "create": "Đăng nhập",
+        "text": "Vui lòng đăng nhập chi tiết tài khoản",
+        "button register": "ĐĂNG NHẬP",
+        "already": "Chưa có tài khoản ?",
+        "button login": "Tạo tài khoản",
+        "forgot": "Bạn đã quên mật khẩu ?"
     },
-    "Terms & Conditions":{
-        "title":"Điều khoản và điều kiện",
-        "content":"Sự riêng tư và bảo mật của bạn không quan trọng đối với chúng tôi. Để biết thêm thông tin về cách chúng tôi sử dụng dữ liệu của bạn, hãy đọc",
-        "privacy":"Chính sách bảo mật"
+    "Terms & Conditions": {
+        "title": "Điều khoản và điều kiện",
+        "content": "Sự riêng tư và bảo mật của bạn không quan trọng đối với chúng tôi. Để biết thêm thông tin về cách chúng tôi sử dụng dữ liệu của bạn, hãy đọc",
+        "privacy": "Chính sách bảo mật"
     },
-    "validate":{
-        "first":"Tên không được để trống !",
-        "last":"Họ không được để trống !",
-        "email":{
-            "required":"Email không được để trống !",
-            "regex":"Email không hợp lệ !"
+    "validate": {
+        "first": "Tên không được để trống !",
+        "last": "Họ không được để trống !",
+        "email": {
+            "required": "Email không được để trống !",
+            "regex": "Email không hợp lệ !"
         },
-        "password":{
-            "required":"Mật khẩu không được để trống !",
-            "regex":"Mật khẩu không được nhỏ hơn 8 kí tự !"
+        "password": {
+            "required": "Mật khẩu không được để trống !",
+            "regex": "Mật khẩu không được nhỏ hơn 8 kí tự !"
         }
-    }
+    },
+    "home": {
+        "banner": {
+            "shop now": "mua sắm ngay",
+            "fresh fruit vegetable": "Trái cây tươi, rau ",
+            "on our product": "Trên sản phẩm của chúng tôi",
+            "Vegetable Eggplant": "Rau cà tím ",
+            "100% Fresh food": "100% thực phẩm tươi"
+        },
 
+        "countdown": {
+            "title": "Ưu đãi trong ngày!",
+            "thumbnail": "Chúng tôi cung cấp một ưu đãi hấp dẫn mỗi dịp lễ hội",
+            "day": "ngày",
+            "hrs": "giờ",
+            "min": "phút",
+            "sec": "giây",
+            "shop collection": "bộ sưu tập cửa hàng"
+        },
+        "product": {
+            "Special Product": "Sản phẩm đặc biệt",
+            "New Product": "Sản phẩm mới",
+            "Bestseller": "Sản phẩm bán chạy nhất"
+        },
+        "shopify": {
+            "title": "Nhận các ưu đãi mới nhất",
+            "sub": "Và nhận phiếu giảm giá 20% cho lần mua sắm đầu tiên",
+            "placeholder": "Nhập địa chỉ email của bạn",
+            "subscribe": "Đăng ký"
+        },
+        "category": {
+            "title": "Cửa hàng theo thể loại"
+        }
+    },
+    "category": {
+        "Baker's Rack": "Baker's Rack",
+        "Breakfast": "Bữa ăn sáng",
+        "Dairy & Chesse": "Sữa & Phô mai",
+        "Dinner": "Bữa tối",
+        "Featured Product": "Sản phẩm nổi bật",
+        "Fresh Fruits ": "Trái cây tươi ",
+        "Fresh Meat ": "Thịt tươi sống ",
+        "Fresh Vegetable": "Rau quả tươi",
+        "Green Seafood": "Hải sản xanh",
+        "New Product": "Sản phẩm mới",
+        "Sea & Fish": "Cá biển",
+        "Organic Juice ": "Nước trái cây ",
+        "Organic Dryfruit": "Quả khô hữu cơ"
+    }
 }

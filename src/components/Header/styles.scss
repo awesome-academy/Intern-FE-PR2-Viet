@@ -24,6 +24,11 @@
         }
     }
     &__language {
+        & > span {
+            @include respond-to("md") {
+                display: none;
+            }
+        }
         &--img {
             @include width-height(2.5rem, 1.5rem);
             padding-right: 0.5rem;
@@ -32,10 +37,13 @@
     &__text {
         font-weight: 500;
         &--animation {
+            -webkit-animation: colorHeader 0.7s infinite;
             animation: colorHeader 0.7s infinite;
         }
     }
     &__main {
+        position: -webkit-sticky;
+        position: sticky;
         &--container {
             @include flex;
             padding-top: 2rem;
@@ -93,6 +101,7 @@
             }
             &-text {
                 position: relative;
+                cursor: pointer;
                 &:first-child {
                     padding-right: 1rem;
                     margin-right: 1rem;
@@ -142,6 +151,18 @@
                 width: 45% !important;
             }
         }
+    }
+}
+
+@-webkit-keyframes colorHeader {
+    0% {
+        color: $white;
+    }
+    50% {
+        color: $primary-color;
+    }
+    100% {
+        color: $white;
     }
 }
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Select, Drawer } from "antd";
-import { useTranslation } from 'react-i18next';
-
+import { useTranslation } from "react-i18next";
 
 import history from "../../../until/history";
 
@@ -142,10 +141,10 @@ const Navbar = ({ setShowNavbar, showNavbar }) => {
                 >
                     {" "}
                     {!item.dropdownData ? (
-                       t(item.name)
+                        t(item.name)
                     ) : (
                         <>
-                           { t(item.name)} <BsChevronDown />
+                            {t(item.name)} <BsChevronDown />
                         </>
                     )}
                 </a>
