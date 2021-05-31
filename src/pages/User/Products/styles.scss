@@ -12,50 +12,6 @@
             max-width: 100% !important;
         }
     }
-    .breadcrumb {
-        &__container {
-            position: relative;
-            @include bgc-image(15%);
-            min-height: 18rem;
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-
-        &__content {
-            @include absolute(50%, "", "", 50%);
-            @include transform-translate(xy, -50%);
-            @include flex(center, center, column);
-            gap: 2rem;
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-        span {
-            cursor: pointer;
-        }
-
-        &__text {
-            color: $primary-color;
-            position: relative;
-
-            &::before,
-            &::after {
-                content: "";
-                @include width-height(1.5px, 1.5rem);
-                background-color: $primary-color;
-            }
-
-            &::before {
-                @include absolute(-100%, "", "", 48%);
-                -webkit-animation: toTop 1.6s linear infinite;
-                animation: toTop 1.6s linear infinite;
-            }
-
-            &::after {
-                @include absolute(-100%, "", "", 52%);
-                -webkit-animation: toBottom 1.5s linear infinite;
-                animation: toBottom 1.6s linear infinite;
-            }
-        }
-    }
 
     .banner {
         &__container {

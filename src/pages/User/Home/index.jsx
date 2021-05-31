@@ -30,6 +30,8 @@ function Home({ getProductHome, productHome, getCategory, categoryData }) {
     const { t } = useTranslation();
 
     useEffect(() => {
+        document.title = "Vegist | Trang Chủ";
+
         getProductHome();
         getCategory();
     }, []);

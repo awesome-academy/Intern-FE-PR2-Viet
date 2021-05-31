@@ -34,17 +34,19 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
 
     const slideShow = (item, index) => {
         return (
-            <div
-                className="slideShow__img"
-                style={{ backgroundImage: `url("${item.img}")` }}
-                key={`slideShow-${index}`}
-            >
-                <div className={`slideShow__content  slideShow__content--${index + 1}`}>
-                    <h4>{item.thumbnail}</h4>
-                    <h2>
-                        {item.title[0]} <br /> {item.title[1]}
-                    </h2>
-                    <button className="button button-round--lg button-primary">SHOP NOW</button>
+            <div>
+                <div
+                    className="slideShow__img"
+                    style={{ backgroundImage: `url(${item.img})` }}
+                    key={`slideShow-${index}`}
+                >
+                    <div className={`slideShow__content  slideShow__content--${index + 1}`}>
+                        <h4>{item.thumbnail}</h4>
+                        <h2>
+                            {item.title[0]} <br /> {item.title[1]}
+                        </h2>
+                        <button className="button button-round--lg button-primary">SHOP NOW</button>
+                    </div>
                 </div>
             </div>
         );
@@ -70,7 +72,6 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
 
             carouselContent.length === 2 && tempArr.push(carouselContent);
         }
-        console.log("slideProduct -> tempArr", tempArr);
         return tempArr.map((element, index) => (
             <Col sm={24} key={`col-${element.id}-${index}`}>
                 {element.map((item) => (
