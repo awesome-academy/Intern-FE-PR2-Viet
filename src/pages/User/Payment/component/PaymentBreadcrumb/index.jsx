@@ -1,23 +1,36 @@
 import React from "react";
 import { FiChevronRight } from "react-icons/fi";
 import history from "../../../../../until/history";
+import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
+
 import "./styles.scss";
-const PaymentBreadcrumb = ({ title }) => {
+const PaymentBreadcrumb = () => {
+    const location = useLocation();
+    const { t } = useTranslation();
+
     return (
         <div className="payment__breadcrumb">
             <span className=" payment__breadcrumb--active" onClick={() => history.push("/cart")}>
-                Cart
+                {t("payments.breadcrumb.Cart")}
             </span>
             <FiChevronRight />
             <span className="payment__breadcrumb--active" onClick={() => history.push("/infoPayment")}>
-                Information
+                {t("payments.breadcrumb.Information")}
             </span>
             <FiChevronRight />
             <span
-                className={` ${title === "Payment" ? "payment__breadcrumb--active" : ""}`}
+                className={` ${location.pathname === "/shipping" ? "payment__breadcrumb--active" : ""}`}
+                onClick={() => history.push("/shipping")}
+            >
+                {t("payments.breadcrumb.Shipping")}
+            </span>
+            <FiChevronRight />
+            <span
+                className={` ${location.pathname === "/payment" ? "payment__breadcrumb--active" : ""}`}
                 onClick={() => history.push("/payment")}
             >
-                Payment
+                {t("payments.breadcrumb.Payment")}
             </span>
         </div>
     );

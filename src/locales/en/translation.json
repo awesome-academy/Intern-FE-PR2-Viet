@@ -85,12 +85,30 @@
         "last": "Last name can't be blank !",
         "email": {
             "required": "Email can't be blank !",
-            "regex": "Invalid email field !"
+            "regex": "Invalid email field !",
+            "max": "Email cannot exceed 50 characters !"
         },
         "password": {
             "password": "password",
             "required": "Password can't be blank !",
             "regex": "Password must not be less than 8 characters !"
+        },
+        "zipCode": "ZIP code must contain 6 digits !",
+        "address": {
+            "required": "Password can't be blank !",
+            "max": "The address cannot exceed 100 characters !"
+        },
+        "phone": {
+            "required": "Phone can't be blank !",
+            "regex": "Invalid phone number !"
+        },
+        "firstName": {
+            "max": "First name must not exceed 50 characters !",
+            "required": "First name can't be blank !"
+        },
+        "lastName": {
+            "max": "Last name must not exceed 20 characters !",
+            "required": "Last name can't be blank !"
         }
     },
     "home": {
@@ -241,5 +259,54 @@
     "orderHistory": {
         "title": "Order History",
         "content": "You haven't placed any orders yet !"
+    },
+    "payments": {
+        "breadcrumb": {
+            "Cart": "Cart",
+            "Information": "Information",
+            "Shipping": "Shipping",
+            "Payment": "Payment"
+        },
+        "information": {
+            "check": "Keep me up to date on news and offers.",
+            "Country/region": "Country/region",
+            "First name": "First name",
+            "Last name": "Last name",
+            "Address": "Address",
+            "Phone": "Phone",
+            "ZIP code": "ZIP code",
+            "Continue to shipping": "Continue to shipping",
+            "Return to cart": "Return to cart"
+        },
+        "shipping": {
+            "Contact": "Contact",
+            "Ship to": "Ship to",
+            "Change": "Change",
+            "Shipping method": "Shipping method",
+            "Your cart has been updated and the previous shipping rate isn’t valid. Select a new rate.": "Your cart has been updated and the previous shipping rate isn’t valid. Select a new rate.",
+            "Standard": "Standard",
+            "Continue to payment": "Continue to payment",
+            "Return to information": "Return to information"
+        },
+        "payment": {
+            "Payment": "Payment",
+            "Credit card": "Credit card",
+            "Cash on Delivery (COD)": "Cash on Delivery (COD)",
+            "Billing address": "Billing address",
+            "Select the address that matches your card or payment method.": "Select the address that matches your card or payment method.",
+            "Same as shipping address": "Same as shipping address",
+            "Use a different billing address": "Use a different billing address",
+            "Complete order": "Complete order",
+            "Return to shipping": "Return to shipping"
+        }
+    },
+    "infoCart": {
+        "Discount": "Discount",
+        "Discount code": "Discount code",
+        "Apply": "Apply",
+        "Subtotal": "Subtotal",
+        "Shipping cost": "Shipping cost",
+        "Calculated at next step": "Calculated at next step",
+        "Total": "Total"
     }
 }

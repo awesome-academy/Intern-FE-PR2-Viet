@@ -86,14 +86,33 @@
         "last": "Họ không được để trống !",
         "email": {
             "required": "Email không được để trống !",
-            "regex": "Email không hợp lệ !"
+            "regex": "Email không hợp lệ !",
+            "max": "Email không được vượt quá 50 kí tự !"
         },
         "password": {
             "password": "password",
             "required": "Mật khẩu không được để trống !",
             "regex": "Mật khẩu không được nhỏ hơn 8 kí tự !"
+        },
+        "zipCode": "ZIP code phải chứa 6 chữ số !",
+        "address": {
+            "required": "Địa chỉ không được để trống !",
+            "max": "Địa chỉ không được vượt quá 100 kí tự !"
+        },
+        "phone": {
+            "required": "Số điện thoại không được để trống !",
+            "regex": "Số điện thoại không hợp lệ !"
+        },
+        "firstName": {
+            "max": "Họ và tên lót không được vượt quá 50 kí tự !",
+            "required": "Họ và tên lót không được để trống !"
+        },
+        "lastName": {
+            "max": "Tên không được vượt quá 20 kí tự !",
+            "required": "Tên không được để trống !"
         }
     },
+
     "home": {
         "banner": {
             "shop now": "mua sắm ngay",
@@ -237,5 +256,54 @@
     "orderHistory": {
         "title": "Lịch sử đặt hàng",
         "content": "Bạn chưa đặt sản phảm nào !"
+    },
+    "payments": {
+        "breadcrumb": {
+            "Cart": "Giỏ hàng",
+            "Information": "Thông tin",
+            "Shipping": "Vận chuyển",
+            "Payment": "Thanh toán"
+        },
+        "information": {
+            "check": "Giữ cho tôi cập nhật tin tức và ưu đãi.",
+            "Country/region": "Quốc gia / khu vực",
+            "First name": "Họ và tên lót",
+            "Last name": "Tên",
+            "Address": "Địa chỉ",
+            "Phone": "Số điện thoại",
+            "ZIP code": "Mã bưu chính",
+            "Continue to shipping": "Tiếp tục giao hàng",
+            "Return to cart": "Quay lại giỏ hàng"
+        },
+        "shipping": {
+            "Contact": "Liên hệ",
+            "Ship to": "Vận chuyển đến",
+            "Change": "Thay đổi",
+            "Shipping method": "Loại hình vận chuyển",
+            "Your cart has been updated and the previous shipping rate isn’t valid. Select a new rate.": "Giỏ hàng của bạn đã được cập nhật và phí vận chuyển trước đó không hợp lệ. Chọn một tỷ lệ mới.",
+            "Standard": "Tiêu chuẩn",
+            "Continue to payment": "Tiếp tục thanh toán",
+            "Return to information": "Quay lại thông tin"
+        },
+        "payment": {
+            "Payment": "Thanh toán",
+            "Credit card": "Thẻ tín dụng",
+            "Cash on Delivery (COD)": "Thu tiền khi giao hàng (COD)",
+            "Billing address": "Địa chỉ thanh toán",
+            "Select the address that matches your card or payment method.": "Chọn địa chỉ phù hợp với thẻ hoặc phương thức thanh toán của bạn.",
+            "Same as shipping address": "Tương tự như địa chỉ giao hàng",
+            "Use a different billing address": "Sử dụng một địa chỉ thanh toán khác",
+            "Complete order": "Kết thúc đặt hàng",
+            "Return to shipping": "Quay lại giao hàng"
+        }
+    },
+    "infoCart": {
+        "Discount": "Giảm giá",
+        "Discount code": "Mã giảm giá",
+        "Apply": "Áp dụng",
+        "Subtotal": "Tổng phụ",
+        "Shipping cost": "Giá vận chuyển",
+        "Calculated at next step": "Tính toán ở bước tiếp theo",
+        "Total": "Tổng cộng"
     }
 }

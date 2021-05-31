@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useTranslation } from "react-i18next";
+import { Formik, Form, Field } from "formik";
 import { Checkbox, Input, Row, Col, Select } from "antd";
 import * as Yup from "yup";
 import PaymentBreadcrumb from "./component/PaymentBreadcrumb";
@@ -8,19 +9,29 @@ import CustomField from "./component/CustomField";
 import VietNam from "../../../assets/images/vietnam.svg";
 import English from "../../../assets/images/english.svg";
 import "./styles.scss";
-import { getInfo } from "../../../redux/actions";
+import { createBill, getInfo } from "../../../redux/actions";
 
-const Information = ({ getInfo, infoUser }) => {
+const Information = ({ getInfo, infoUser, cartData, createBill }) => {
     const { Option } = Select;
+    const { t } = useTranslation();
     const [valueSelect, setValueSelect] = useState("vi");
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("profile"));
         getInfo({ email: user.email });
     }, []);
-    const handleSubmitForm = (values, valueSelect) => {
-        const dataForm = { ...values, country: valueSelect };
+
+    const handleSubmitForm = (values) => {
+        const { firstName, lastName, ...other } = values;
+        const dataForm = {
+            user: user.email,
+            name: `${firstName} ${lastName}`,
+            ...other,
+            country: valueSelect,
+            cartData: [...cartData],
+        };
+        createBill({ ...dataForm });
     };
-    const handleChangeCountry = (value) => {};
+
     return (
         <div className="payment-page">
             <div className="container payment__container">
@@ -29,9 +40,9 @@ const Information = ({ getInfo, infoUser }) => {
                     <PaymentBreadcrumb />
                     <Formik
                         initialValues={{
-                            email: infoUser?.email || "",
-                            firstName: infoUser?.first || "",
-                            lastName: infoUser?.last || "",
+                            email: infoUser?.email,
+                            firstName: infoUser?.first,
+                            lastName: infoUser?.last,
                             address: infoUser?.address || "",
                             zipCode: infoUser?.zipCode || "",
                             phone: infoUser?.phone || "",
@@ -39,30 +50,30 @@ const Information = ({ getInfo, infoUser }) => {
                         }}
                         validationSchema={Yup.object({
                             email: Yup.string()
-                                .required("Vui lòng nhập trường này")
-                                .max(50, "Tên không được vượt quá 50 kí tự")
+                                .required(t("validate.email.required"))
+                                .max(50, t("validate.email.max"))
                                 .email("Email không hợp lệ"),
                             firstName: Yup.string()
-                                .max(15, "Must be 15 characters or less")
-                                .required("Vui lòng nhập trường này"),
+                                .max(50, t("validate.firstName.max"))
+                                .required(t("validate.firstName.required")),
                             lastName: Yup.string()
-                                .max(20, "Must be 20 characters or less")
-                                .required("Vui lòng nhập trường này"),
+                                .max(20, t("validate.lastName.max"))
+                                .required(t("validate.lastName.required")),
                             phone: Yup.string()
-                                .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g, "Số điện thoại không hợp lệ")
-                                .required("Vui lòng nhập trường này"),
+                                .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g, t("validate.phone.regex"))
+                                .required(t("validate.phone.required")),
                             address: Yup.string()
-                                .required("Vui lòng nhập trường này")
-                                .max(50, "Tên không được vượt quá 50 kí tự"),
-                            zipCode: Yup.string().matches(/([0-9]{6})/, "ZIP code phải chứa 6 chữ số"),
+                                .required(t("validate.address.required"))
+                                .max(100, t("validate.address.max")),
+                            zipCode: Yup.string().matches(/([0-9]{6})/, t("validate.zipCode")),
                         })}
-                        onSubmit={(values) => handleSubmitForm(values, valueSelect)}
+                        onSubmit={(values) => handleSubmitForm(values)}
                         enableReinitialize
                     >
                         <Form>
                             <Row gutter={[24, 16]}>
                                 <Col xs={24}>
-                                    <CustomField name="email" type="email" label="Email " />
+                                    <CustomField name="email" type="email" label="Email" />
                                 </Col>
                                 <Col xs={24}>
                                     <div className="form__control">
@@ -71,7 +82,7 @@ const Information = ({ getInfo, infoUser }) => {
                                             name="check"
                                             render={({ field }) => (
                                                 <Checkbox {...field}>
-                                                    Keep me up to date on news and offers
+                                                    {t("payments.information.check")}
                                                 </Checkbox>
                                             )}
                                         />
@@ -79,21 +90,39 @@ const Information = ({ getInfo, infoUser }) => {
                                 </Col>
 
                                 <Col sm={12} xs={24}>
-                                    <CustomField name="firstName" type="text" label="First name " />
+                                    <CustomField
+                                        name="firstName"
+                                        type="text"
+                                        label={t("payments.information.First name")}
+                                    />
                                 </Col>
 
                                 <Col sm={12} xs={24}>
-                                    <CustomField name="lastName" type="text" label="Last name " />
+                                    <CustomField
+                                        name="lastName"
+                                        type="text"
+                                        label={t("payments.information.Last name")}
+                                    />
                                 </Col>
                                 <Col sm={15} xs={24}>
-                                    <CustomField name="address" type="text" label="Address " />
+                                    <CustomField
+                                        name="address"
+                                        type="text"
+                                        label={t("payments.information.Address")}
+                                    />
                                 </Col>
                                 <Col sm={9} xs={24}>
-                                    <CustomField name="phone" type="text" label="Phone " />
+                                    <CustomField
+                                        name="phone"
+                                        type="text"
+                                        label={t("payments.information.Phone")}
+                                    />
                                 </Col>
                                 <Col sm={9} xs={24}>
                                     <div className="form__control">
-                                        <label htmlFor="title">Country/region</label>
+                                        <label htmlFor="title">
+                                            {t("payments.information.Country/region")}
+                                        </label>
                                         <Field
                                             name="country"
                                             render={({ field }) => (
@@ -124,17 +153,21 @@ const Information = ({ getInfo, infoUser }) => {
                                     </div>
                                 </Col>
                                 <Col sm={15} xs={24}>
-                                    <CustomField name="zipCode" type="text" label="ZIP code " />
+                                    <CustomField
+                                        name="zipCode"
+                                        type="text"
+                                        label={t("payments.information.ZIP code")}
+                                    />
                                 </Col>
                                 <Col>
                                     <button type="submit" className="button button-round--lg button-primary">
-                                        Lưu
+                                        {t("payments.information.Continue to shipping")}
                                     </button>
                                     <button
                                         type="button"
                                         className="button button-round--lg button-transparent"
                                     >
-                                        Quay lại giỏ hàng
+                                        {t("payments.information.Return to cart")}
                                     </button>
                                 </Col>
                             </Row>
@@ -148,12 +181,15 @@ const Information = ({ getInfo, infoUser }) => {
 
 const mapStateToProps = (state) => {
     const { infoUser } = state.accountReducer;
-    return { infoUser };
+    const { cartData } = state.cartReducer;
+    const { billData } = state.paymentReducer;
+    return { infoUser, cartData, billData };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getInfo: (params) => dispatch(getInfo(params)),
+        createBill: (params) => dispatch(createBill(params)),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Information);
