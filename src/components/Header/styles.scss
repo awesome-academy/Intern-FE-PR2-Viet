@@ -140,6 +140,9 @@
             @include respond-to("lg") {
                 display: none;
             }
+            &-text{
+                cursor: pointer;
+            }
         }
     }
     &__navbar {

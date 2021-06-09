@@ -1,141 +1,142 @@
 {
-    "header_text": {
-        "free": "Free shipping",
-        "order": "Orders From All item"
+  "header_text": {
+    "free": "Free shipping",
+    "order": "Orders From All item"
+  },
+  "language": {
+    "name": "Language",
+    "english": "English",
+    "vietnam": "Vietnamese"
+  },
+  "Home": "Home",
+  "Shop": "Shop",
+  "Collection": "Collection",
+  "About Us": "About Us",
+  "Faq's": "Faq's",
+  "Blog": "Blog",
+  "Account": "Account",
+  "Register": "Register",
+  "Login": "Login",
+  "Hotline": "Hotline",
+  "Free delivery": "Free delivery",
+  "Cash On Delivery": "Cash On Delivery",
+  "30 Days Returns": "30 Days Returns",
+  "Online Support": "Online Support",
+  "Address": "Address",
+  "Contact": "Contact",
+  "Categories": {
+    "Top_Categories": {
+      "name": "Top Categories",
+      "Fruits": "Fruits",
+      "Fast Foods": "Fast Foods",
+      "Vegetables": "Vegetables",
+      "Salads": "Salads",
+      "Bestseller": "Bestseller"
     },
-    "language": {
-        "name": "Language",
-        "english": "English",
-        "vietnam": "Vietnamese"
+    "Services": {
+      "name": "Services",
+      "About Vegist": "About Vegist",
+      "Faq's": "Faq's",
+      "Contact Us": "Contact Us",
+      "News": "News",
+      "Sitemap": "Sitemap"
     },
-    "Home": "Home",
-    "Shop": "Shop",
-    "Collection": "Collection",
-    "About Us": "About Us",
-    "Faq's": "Faq's",
-    "Blog": "Blog",
-    "Account": "Account",
-    "Register": "Register",
-    "Login": "Login",
-    "Hotline": "Hotline",
-    "Free delivery": "Free delivery",
-    "Cash On Delivery": "Cash On Delivery",
-    "30 Days Returns": "30 Days Returns",
-    "Online Support": "Online Support",
-    "Address": "Address",
-    "Contact": "Contact",
-    "Categories": {
-        "Top_Categories": {
-            "name": "Top Categories",
-            "Fruits": "Fruits",
-            "Fast Foods": "Fast Foods",
-            "Vegetables": "Vegetables",
-            "Salads": "Salads",
-            "Bestseller": "Bestseller"
-        },
-        "Services": {
-            "name": "Services",
-            "About Vegist": "About Vegist",
-            "Faq's": "Faq's",
-            "Contact Us": "Contact Us",
-            "News": "News",
-            "Sitemap": "Sitemap"
-        },
-        "Privacy_Terms": {
-            "name": "Privacy & Terms",
-            "Payment policy": "Payment policy",
-            "Privacy policy": "Privacy policy",
-            "Return policy": "Return policy",
-            "shipping policy": "shipping policy",
-            "Terms & Conditions": "Terms & Conditions"
-        },
-        "My_Account": {
-            "name": "My Account",
-            "My Account": "My Account",
-            "My Cart": "My Cart",
-            "Order History": "Order History",
-            "My Wishlist": "My Wishlist",
-            "My Address": "My Address"
-        }
+    "Privacy_Terms": {
+      "name": "Privacy & Terms",
+      "Payment policy": "Payment policy",
+      "Privacy policy": "Privacy policy",
+      "Return policy": "Return policy",
+      "shipping policy": "shipping policy",
+      "Terms & Conditions": "Terms & Conditions"
     },
-    "register": {
-        "create": "Create Account",
-        "text": "Please register below account detail",
-        "button register": "CREATE ACCOUNT",
-        "already": "Already an account holder ?",
-        "button login": "Log in"
+    "My_Account": {
+      "name": "My Account",
+      "My Account": "My Account",
+      "My Cart": "My Cart",
+      "Order History": "Order History",
+      "My Wishlist": "My Wishlist",
+      "My Address": "My Address"
+    }
+  },
+  "register": {
+    "create": "Create Account",
+    "text": "Please register below account detail",
+    "button register": "CREATE ACCOUNT",
+    "already": "Already an account holder ?",
+    "button login": "Log in"
+  },
+  "login": {
+    "create": "Login",
+    "text": "Please login below account detail",
+    "button register": "SIGN IN",
+    "already": "Don't have account ?",
+    "button login": "Create account",
+    "forgot": "Forgot your password"
+  },
+  "Terms & Conditions": {
+    "title": "Terms & Conditions",
+    "content": "Your privacy and security are important to us. For more information on how we use your data read our",
+    "privacy": "privacy policy"
+  },
+  "validate": {
+    "first": "First name can't be blank !",
+    "last": "Last name can't be blank !",
+    "email": {
+      "required": "Email can't be blank !",
+      "regex": "Invalid email field !"
     },
-    "login": {
-        "create": "Login",
-        "text": "Please login below account detail",
-        "button register": "SIGN IN",
-        "already": "Don't have account ?",
-        "button login": "Create account",
-        "forgot": "Forgot your password"
+    "password": {
+      "password": "password",
+      "required": "Password can't be blank !",
+      "regex": "Password must not be less than 8 characters !"
+    }
+  },
+  "home": {
+    "banner": {
+      "shop now": "shop now",
+      "fresh fruit vegetable": "Fresh fruit,vegetable ",
+      "on our product": "On our product",
+      "Vegetable Eggplant": "Vegetable Eggplant ",
+      "100% Fresh food": "100% Fresh food"
     },
-    "Terms & Conditions": {
-        "title": "Terms & Conditions",
-        "content": "Your privacy and security are important to us. For more information on how we use your data read our",
-        "privacy": "privacy policy"
-    },
-    "validate": {
-        "first": "First name can't be blank !",
-        "last": "Last name can't be blank !",
-        "email": {
-            "required": "Email can't be blank !",
-            "regex": "Invalid email field !"
-        },
-        "password": {
-            "required": "Password can't be blank !",
-            "regex": "Password must not be less than 8 characters !"
-        }
-    },
-    "home": {
-        "banner": {
-            "shop now": "shop now",
-            "fresh fruit vegetable": "Fresh fruit,vegetable ",
-            "on our product": "On our product",
-            "Vegetable Eggplant": "Vegetable Eggplant ",
-            "100% Fresh food": "100% Fresh food"
-        },
 
-        "countdown": {
-            "title": "Deal Of The Day!",
-            "thumbnail": "We offer a hot deal offer every festival",
-            "day": "day",
-            "hrs": "hrs",
-            "min": "min",
-            "sec": "sec",
-            "shop collection": "shop collection"
-        },
-        "product": {
-            "Special Product": "Special Product",
-            "New Product": "New Product",
-            "Bestseller": "Bestseller"
-        },
-        "shopify": {
-            "title": "Get The Latest Deals",
-            "sub": "And Receive 20% Off Coupon For First Shopping",
-            "placeholder": "Enter Your Email Address",
-            "subscribe": "Subscribe"
-        },
-        "category": {
-            "title": "Shop By Category"
-        }
+    "countdown": {
+      "title": "Deal Of The Day!",
+      "thumbnail": "We offer a hot deal offer every festival",
+      "day": "day",
+      "hrs": "hrs",
+      "min": "min",
+      "sec": "sec",
+      "shop collection": "shop collection"
+    },
+    "product": {
+      "Special Product": "Special Product",
+      "New Product": "New Product",
+      "Bestseller": "Bestseller"
+    },
+    "shopify": {
+      "title": "Get The Latest Deals",
+      "sub": "And Receive 20% Off Coupon For First Shopping",
+      "placeholder": "Enter Your Email Address",
+      "subscribe": "Subscribe"
     },
     "category": {
-        "Baker's Rack": "Baker's Rack",
-        "Breakfast": "Breakfast",
-        "Dairy & Chesse": "Dairy & Chesse",
-        "Dinner": "Dinner",
-        "Featured Product": "Featured Product",
-        "Fresh Fruits ": "Fresh Fruits ",
-        "Fresh Meat ": "Fresh Meat ",
-        "Fresh Vegetable": "Fresh Vegetable",
-        "Green Seafood": "Green Seafood",
-        "New Product": "New Product",
-        "Sea & Fish": "Sea & Fish",
-        "Organic Juice ": "Organic Juice ",
-        "Organic Dryfruit": "Organic Dryfruit"
+      "title": "Shop By Category"
     }
+  },
+  "category": {
+    "Baker's Rack": "Baker's Rack",
+    "Breakfast": "Breakfast",
+    "Dairy & Chesse": "Dairy & Chesse",
+    "Dinner": "Dinner",
+    "Featured Product": "Featured Product",
+    "Fresh Fruits ": "Fresh Fruits ",
+    "Fresh Meat ": "Fresh Meat ",
+    "Fresh Vegetable": "Fresh Vegetable",
+    "Green Seafood": "Green Seafood",
+    "New Product": "New Product",
+    "Sea & Fish": "Sea & Fish",
+    "Organic Juice ": "Organic Juice ",
+    "Organic Dryfruit": "Organic Dryfruit"
+  }
 }
