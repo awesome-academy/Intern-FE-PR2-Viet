@@ -1,12 +1,38 @@
+import React, { useState, useEffect } from "react";
 import { Col, Row, Tabs } from "antd";
-import React from "react";
+import { connect } from "react-redux";
 import Slide from "./Slide";
 import { useTranslation } from "react-i18next";
+import { getTotalProduct, getCategory } from "../../../redux/actions";
 import "./styles.scss";
 
+const dataSlide = [
+    {
+        img: "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/slider1-min.jpg?v=1593257108",
+        title: ["Fresh Fruits ", " & vegetable"],
+        thumbnail: "Summer Vege sale",
+    },
+    {
+        img: "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/slider2.jpg?v=1593431537",
+        title: ["Prod Of Indian  ", "100% Pacaging"],
+        thumbnail: "Organic Indian Masala",
+    },
+    {
+        img: "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/slider3-min.jpg?v=1593257113",
+        title: ["Fresh for your", " heath"],
+        thumbnail: "Top Selling!",
+    },
+];
+
 const { TabPane } = Tabs;
-function Home() {
+
+function Home({ getTotalProduct, productHome, getCategory, categoryData }) {
     const { t } = useTranslation();
+
+    useEffect(() => {
+        getTotalProduct();
+        getCategory();
+    }, []);
 
     return (
         <div className="home">
@@ -61,7 +87,7 @@ function Home() {
                 <div className="container  category__container">
                     <h2 className="category__title">{t("home.category.title")}</h2>
                     <div className="category__slide">
-                        <Slide data={Category} type="category" xl={6} lg={5} md={4} sm={3} xs={2}></Slide>
+                        <Slide data={categoryData} type="category" xl={6} lg={5} md={4} sm={3} xs={2}></Slide>
                     </div>
                 </div>
             </section>
@@ -113,7 +139,15 @@ function Home() {
                             }
                             key="1"
                         >
-                            <Slide data={data} type="product" xl={4} lg={4} md={3} sm={2} xs={2}></Slide>
+                            <Slide
+                                data={productHome.special}
+                                type="product"
+                                xl={4}
+                                lg={4}
+                                md={3}
+                                sm={2}
+                                xs={2}
+                            ></Slide>
                         </TabPane>
                         <TabPane
                             tab={
@@ -123,7 +157,15 @@ function Home() {
                             }
                             key="2"
                         >
-                            <Slide data={data} type="product" xl={4} lg={4} md={3} sm={2} xs={2}></Slide>
+                            <Slide
+                                data={productHome.new}
+                                type="product"
+                                xl={4}
+                                lg={4}
+                                md={3}
+                                sm={2}
+                                xs={2}
+                            ></Slide>
                         </TabPane>
                         <TabPane
                             tab={
@@ -133,7 +175,15 @@ function Home() {
                             }
                             key="3"
                         >
-                            <Slide data={data} type="product" xl={4} lg={4} md={3} sm={2} xs={2}></Slide>
+                            <Slide
+                                data={productHome.sale}
+                                type="product"
+                                xl={4}
+                                lg={4}
+                                md={3}
+                                sm={2}
+                                xs={2}
+                            ></Slide>
                         </TabPane>
                     </Tabs>
                 </div>
@@ -178,21 +228,19 @@ function Home() {
     );
 }
 
-const dataSlide = [
-    {
-        img: "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/slider1-min.jpg?v=1593257108",
-        title: ["Fresh Fruits ", " & vegetable"],
-        thumbnail: "Summer Vege sale",
-    },
-    {
-        img: "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/slider2.jpg?v=1593431537",
-        title: ["Prod Of Indian  ", "100% Pacaging"],
-        thumbnail: "Organic Indian Masala",
-    },
-    {
-        img: "https://cdn.shopify.com/s/files/1/0412/8151/9765/files/slider3-min.jpg?v=1593257113",
-        title: ["Fresh for your", " heath"],
-        thumbnail: "Top Selling!",
-    },
-];
-export default Home;
+const mapStateToProps = (state) => {
+    const { productHome } = state.productReducer;
+    const { categoryData } = state.categoryReducer;
+
+    return {
+        productHome,
+        categoryData,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getTotalProduct: (params) => dispatch(getTotalProduct(params)),
+        getCategory: (params) => dispatch(getCategory(params)),
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

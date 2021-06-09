@@ -41,7 +41,7 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
     const settings = {
         dots: type === "slideShow" ? true : false,
         infinite: true,
-        speed: type === "slideShow" ? 2000 : 800,
+        speed: type === "slideShow" ? 1000 : 800,
         slidesToShow: type === "slideShow" ? 1 : slidesToShow(),
         slidesToScroll: 1,
         autoplay: false,
@@ -55,7 +55,7 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
         return (
             <div
                 className="slideShow__img"
-                style={{ backgroundImage: `url(${item.img})` }}
+                style={{ backgroundImage: `url("${item.img}")` }}
                 key={`slideShow-${index}`}
             >
                 <div className={`slideShow__content  slideShow__content--${index + 1}`}>
@@ -68,9 +68,10 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
             </div>
         );
     };
+
     const slideCategory = (item, index) => {
         return (
-            <div className="slide-category__item">
+            <div className="slide-category__item" key={`category-${item.id}`}>
                 <a href="#" className="slide-category__img">
                     <img src={item.img} alt="anh category"></img>
                 </a>
@@ -80,17 +81,18 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
             </div>
         );
     };
+
     const slideProduct = (data) => {
         let tempArr = [];
-        for (let i = 0; i < data.length; i += 2) {
+        for (let i = 0; i < data?.length; i += 2) {
             const carouselContent = data.slice(i, i + 2);
 
             carouselContent.length === 2 && tempArr.push(carouselContent);
         }
         return tempArr.map((element, index) => (
-            <Col sm={24}>
+            <Col sm={24} key={`col-${element.id}-${index}`}>
                 {element.map((item) => (
-                    <Row>
+                    <Row key={`row-${item.id}`}>
                         <Col sm={24} className="slide-product__col">
                             <ProductItem data={item}> </ProductItem>
                         </Col>
@@ -99,6 +101,7 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
             </Col>
         ));
     };
+
     return (
         <div
             className={`slide ${
@@ -107,9 +110,9 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
         >
             <Slider {...settings}>
                 {type === "slideShow" || type === "category"
-                    ? data.map((item, index) => (
-                          <>{type === "slideShow" ? slideShow(item, index) : slideCategory(item, index)}</>
-                      ))
+                    ? data?.map((item, index) =>
+                          type === "slideShow" ? slideShow(item, index) : slideCategory(item, index)
+                      )
                     : slideProduct(data)}
             </Slider>
         </div>
