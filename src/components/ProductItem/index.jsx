@@ -40,7 +40,9 @@ const ProductItem = ({ data }) => {
                 {oldPrice && <span className="product-item--sale">{sales} %</span>}
             </div>
             <div className="product-item__content">
-                <h3 className="product-item__name">{name}</h3>
+                <Tooltip placement="topLeft" title={name}>
+                    <h3 className="product-item__name text-clamp text-clamp--1">{name}</h3>
+                </Tooltip>
                 <div className="product-item__rate">
                     <Star rate={rate}></Star>
                 </div>
