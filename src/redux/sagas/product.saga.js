@@ -8,6 +8,9 @@ import {
     GET_PRODUCTS,
     GET_PRODUCTS_SUCCESS,
     GET_PRODUCTS_FAIL,
+    GET_TOTAL_PRODUCTS,
+    GET_TOTAL_PRODUCTS_SUCCESS,
+    GET_TOTAL_PRODUCTS_FAIL,
 } from "../constants";
 
 const apiURL = process.env.REACT_APP_API_URL;
@@ -46,13 +49,20 @@ function* getProductHomeSaga() {
 
 function* getProductSaga(action) {
     try {
-        const { page, limit } = action.payload;
+        const { page, limit, category, price, tag, sort } = action.payload;
         const response = yield axios({
             method: "GET",
             url: `${apiURL}/products`,
             params: {
                 ...(page && { _page: page }),
                 ...(limit && { _limit: limit }),
+                ...(category && { categoryId: category }),
+                ...(price && { newPrice_gte: price[0], newPrice_lte: price[1] }),
+                ...(tag && { tagId: tag }),
+                ...(sort === "bestSelling" && { oldPrice_gte: 0 }),
+                ...(sort === "priceLowToHigh" && { _sort: "newPrice", _order: "asc" }),
+                ...(sort === "priceHighToLow" && { _sort: "newPrice", _order: "desc" }),
+                ...(sort === "date" && { news: true }),
             },
         });
         const data = response.data;
@@ -68,7 +78,37 @@ function* getProductSaga(action) {
     }
 }
 
+function* getTotalProductSaga(action) {
+    try {
+        const { category, price, tag, sort } = action.payload;
+
+        const response = yield axios({
+            method: "GET",
+            url: `${apiURL}/products`,
+            params: {
+                ...(category && { categoryId: category }),
+                ...(price && { newPrice_gte: price[0], newPrice_lte: price[1] }),
+                ...(tag && { tagId: tag }),
+                ...(sort === "bestSelling" && { oldPrice_gte: 0 }),
+                ...(sort === "priceLowToHigh" && { _sort: "newPrice", _order: "asc" }),
+                ...(sort === "priceHighToLow" && { _sort: "newPrice", _order: "desc" }),
+                ...(sort === "date" && { news: true }),
+            },
+        });
+        const data = response.data;
+        yield put({
+            type: GET_TOTAL_PRODUCTS_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        yield put({
+            type: GET_TOTAL_PRODUCTS_FAIL,
+            payload: error,
+        });
+    }
+}
 export default function* productSaga() {
     yield takeEvery(GET_PRODUCT_HOME, getProductHomeSaga);
     yield takeEvery(GET_PRODUCTS, getProductSaga);
+    yield takeEvery(GET_TOTAL_PRODUCTS, getTotalProductSaga);
 }

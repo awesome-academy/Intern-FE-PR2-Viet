@@ -1,31 +1,97 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./styles.scss";
 import Sidebar from "./Sidebar";
 import { Col, Pagination, Row, Select } from "antd";
 import { CgLayoutGrid, CgLayoutGridSmall, CgLayoutList } from "react-icons/cg";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
-import { getProducts } from "../../../redux/actions";
+import { getProducts, getTotalProducts } from "../../../redux/actions";
 import ProductItem from "../../../components/ProductItem";
+import useWindowDimensions from "../../../until/width";
 
 const arrSelect = [
-    "Featured",
-    "Best Selling",
-    "Price, low to high",
-    "Price, high to low",
-    "Date, new to old",
+    { title: "Featured", value: "featured" },
+    { title: "Best Selling", value: "bestSelling" },
+    { title: "Price, low to high", value: "priceLowToHigh" },
+    { title: "Price, high to low", value: "priceHighToLow" },
+    { title: "Date, new to old", value: "date" },
 ];
 
-const Products = ({ getProducts, productsData }) => {
+const Products = ({ getProducts, productsData, getTotalProducts, totalProduct }) => {
+    const { width } = useWindowDimensions();
     const { Option } = Select;
     const { t } = useTranslation();
+    const [numberOfProduct, setNumberOfProduct] = useState(4);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [bannerData, setBannerData] = useState({});
+    const [filterProducts, setFilterProducts] = useState({
+        category: [],
+        price: [],
+        tag: null,
+        sort: null,
+    });
+
+    if (width >= 1200) {
+        window.scrollTo({
+            top: 430,
+            left: 0,
+            behavior: "smooth",
+        });
+    } else if (width >= 992) {
+        window.scrollTo({
+            top: 380,
+            left: 0,
+            behavior: "smooth",
+        });
+    } else {
+        window.scrollTo({
+            top: 340,
+            left: 0,
+            behavior: "smooth",
+        });
+    }
 
     useEffect(() => {
-        getProducts({ page: 1, limit: 12 });
-    }, []);
-    const [currentPage, setCurrentPage] = useState(1);
+        getProducts({
+            page: currentPage,
+            limit: 12,
+            category: filterProducts.category,
+            price: filterProducts.price,
+            tag: filterProducts.tag,
+            sort: filterProducts.sort,
+        });
+    }, [filterProducts, currentPage]);
 
-    const handelChangePage = () => {};
+    useEffect(() => {
+        getTotalProducts({
+            category: filterProducts.category,
+            price: filterProducts.price,
+            tag: filterProducts.tag,
+            sort: filterProducts.sort,
+        });
+    }, [filterProducts, currentPage]);
+
+    const handelChangePage = (page) => {
+        setCurrentPage(page);
+    };
+
+    const handelChangeSort = (value) => {
+        setFilterProducts({
+            filterProducts,
+            sort: value,
+        });
+        setCurrentPage(1);
+    };
+
+    const renderLocationProduct = () => {
+        const start = (currentPage - 1) * 12 + 1;
+        let end;
+        if (productsData.length >= 12) {
+            end = (currentPage - 1) * 12 + 12;
+        } else end = start + productsData.length - 1;
+        return `${start} - ${end}`;
+    };
+
     return (
         <div className="products">
             <section className="breadcrumb">
@@ -44,9 +110,15 @@ const Products = ({ getProducts, productsData }) => {
             </section>
             <div className="container products__container">
                 <Row>
-                    <Col xl={6} lg={7} md={8} sm={24}>
+                    <Col xl={6} lg={7} md={8} sm={24} className="col-sm-100">
                         <div className="container">
-                            <Sidebar />
+                            <Sidebar
+                                filterProducts={filterProducts}
+                                setFilterProducts={setFilterProducts}
+                                setCurrentPage={setCurrentPage}
+                                totalProduct={totalProduct}
+                                setBannerData={setBannerData}
+                            />
                         </div>
                     </Col>
                     <Col xl={18} lg={17} md={16} sm={24}>
@@ -60,9 +132,13 @@ const Products = ({ getProducts, productsData }) => {
                                     }}
                                 >
                                     <div className="banner__content">
-                                        <div className="banner__title">{t(`category.Dairy & Chesse`)}</div>
+                                        <div className="banner__title">
+                                            {bannerData.name
+                                                ? t(`category.${bannerData.name}`)
+                                                : t("products.Anything...")}
+                                        </div>
                                         <div className="banner__desc text-clamp text-clamp--3">
-                                            Praesent dapibus, neque id cursus ucibus, tortor neque egestas
+                                            {bannerData && bannerData.description}
                                         </div>
                                     </div>
                                 </div>
@@ -70,8 +146,8 @@ const Products = ({ getProducts, productsData }) => {
                             <section className="topbar">
                                 <div className="topbar__left">
                                     <CgLayoutList />
-                                    <CgLayoutGrid />
-                                    <CgLayoutGridSmall />
+                                    <CgLayoutGrid onClick={() => setNumberOfProduct(3)} />
+                                    <CgLayoutGridSmall onClick={() => setNumberOfProduct(4)} />
                                 </div>
                                 <div className="topbar__right">
                                     <span className="topbar__right--text">{t("products.sort by")}</span>
@@ -80,36 +156,41 @@ const Products = ({ getProducts, productsData }) => {
                                         style={{ width: 160 }}
                                         placeholder={t(`products.placeholder`)}
                                         optionFilterProp="children"
+                                        onChange={handelChangeSort}
                                     >
                                         {arrSelect.map((item, index) => (
-                                            <Option value={index}>{t(`products.${item}`)}</Option>
+                                            <Option value={item.value} key={`option-${item.value}`}>
+                                                {t(`products.${item.title}`)}
+                                            </Option>
                                         ))}
                                     </Select>
-                                    ,
                                 </div>
                             </section>
                             <section className="list">
                                 <div className="list__content">
                                     <Row gutter={[16, 16]}>
                                         {productsData.map((item) => (
-                                            <Col xl={6} lg={8} sm={12} xs={18}>
+                                            <Col xl={24 / numberOfProduct} lg={8} sm={12} xs={12}>
                                                 <ProductItem data={item} />
                                             </Col>
                                         ))}
                                     </Row>
                                 </div>
                             </section>
-                            <section className="pagination">
-                                <div className="pagination__result">
-                                    {t("products.Showing")} 1-8 {t("products.of")} 22 {t("products.result")}
-                                </div>
-                                <Pagination
-                                    current={currentPage}
-                                    onChange={handelChangePage}
-                                    total={30}
-                                    defaultPageSize={10}
-                                />
-                            </section>
+                            {totalProduct && (
+                                <section className="pagination">
+                                    <div className="pagination__result">
+                                        {t("products.Showing")} {renderLocationProduct()} {t("products.of")}{" "}
+                                        {totalProduct.length} {t("products.result")}
+                                    </div>
+                                    <Pagination
+                                        current={currentPage}
+                                        onChange={handelChangePage}
+                                        total={totalProduct?.length}
+                                        defaultPageSize={12}
+                                    />
+                                </section>
+                            )}
                         </div>
                     </Col>
                 </Row>
@@ -119,14 +200,16 @@ const Products = ({ getProducts, productsData }) => {
 };
 
 const mapStateToProps = (state) => {
-    const { productsData } = state.productReducer;
+    const { productsData, totalProduct } = state.productReducer;
     return {
         productsData,
+        totalProduct,
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         getProducts: (params) => dispatch(getProducts(params)),
+        getTotalProducts: (params) => dispatch(getTotalProducts(params)),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

@@ -76,7 +76,7 @@
             }
             &--item {
                 padding: 0.3rem 0.5rem;
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 background-color: $primary-color;
                 color: $white;
                 cursor: pointer;
@@ -161,12 +161,22 @@
                     border-color: $black;
                     color: $white;
                 }
+
+                &-active {
+                    background-color: $black;
+                    border-color: $black;
+                    color: $white;
+                }
             }
         }
 
         &__banner {
             margin-top: 3rem;
             overflow: hidden;
+
+            @include respond-to("md") {
+                display: none;
+            }
 
             &--img {
                 position: relative;

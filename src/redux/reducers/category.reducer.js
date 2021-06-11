@@ -1,7 +1,8 @@
-import { GET_CATEGORY_FAIL, GET_CATEGORY_SUCCESS } from "../constants";
+import { GET_CATEGORY_FAIL, GET_CATEGORY_SUCCESS, GET_SIDEBAR_FAIL, GET_SIDEBAR_SUCCESS } from "../constants";
 
 const initialState = {
     categoryData: [],
+    sidebarData: {},
 };
 
 export default function categoryReducer(state = initialState, action) {
@@ -12,6 +13,14 @@ export default function categoryReducer(state = initialState, action) {
                 categoryData: [...action.payload],
             };
         case GET_CATEGORY_FAIL: {
+            return state;
+        }
+        case GET_SIDEBAR_SUCCESS:
+            return {
+                ...state,
+                sidebarData: { ...action.payload },
+            };
+        case GET_SIDEBAR_FAIL: {
             return state;
         }
         default:

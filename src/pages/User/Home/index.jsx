@@ -3,7 +3,7 @@ import { Col, Row, Tabs } from "antd";
 import { connect } from "react-redux";
 import Slide from "./Slide";
 import { useTranslation } from "react-i18next";
-import { getTotalProduct, getCategory } from "../../../redux/actions";
+import { getProductHome, getCategory } from "../../../redux/actions";
 import "./styles.scss";
 
 const dataSlide = [
@@ -26,11 +26,11 @@ const dataSlide = [
 
 const { TabPane } = Tabs;
 
-function Home({ getTotalProduct, productHome, getCategory, categoryData }) {
+function Home({ getProductHome, productHome, getCategory, categoryData }) {
     const { t } = useTranslation();
 
     useEffect(() => {
-        getTotalProduct();
+        getProductHome();
         getCategory();
     }, []);
 
@@ -239,7 +239,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        getTotalProduct: (params) => dispatch(getTotalProduct(params)),
+        getProductHome: (params) => dispatch(getProductHome(params)),
         getCategory: (params) => dispatch(getCategory(params)),
     };
 };
