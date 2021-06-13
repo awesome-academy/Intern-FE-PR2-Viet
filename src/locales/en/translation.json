@@ -119,6 +119,9 @@
             "sub": "And Receive 20% Off Coupon For First Shopping",
             "placeholder": "Enter Your Email Address",
             "subscribe": "Subscribe"
+        },
+        "category": {
+            "title": "Shop By Category"
         }
     },
     "category": {
@@ -164,6 +167,30 @@
         "of": "of",
         "result": "result",
         "placeholder": "Select a type",
-        "Anything...": "Anything..."
+        "Anything...": "Anything...",
+        "Organic Juice ": "Organic Juice ",
+        "Organic Dryfruit": "Organic Dryfruit"
+    },
+
+    "productDetail": {
+        "Review": "Write a review",
+        "Review__customer": "Customer Review",
+        "Review__rating": "Rating",
+        "Review__title": "Review Title",
+        "Review__body": "Body of Review (1000)characters remaining",
+        "Review__submit": "Review submit",
+        "Review__validate": {
+            "title": "Please input your title !",
+            "content": "Content must be less than 1000 characters"
+        },
+        "Availability": "Availability",
+        "Availability__stock": "In stock",
+        "Availability__new": "News",
+        "Hurry up": "Hurry up !",
+        "Size": "Size",
+        "Material": "Material",
+        "Quantity": "Quantity",
+        "Share": "Share",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and"
     }
 }

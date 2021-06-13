@@ -80,7 +80,7 @@ function* loginSaga(action) {
         const data = response.data
         const isPasswordCorrect = yield bcrypt.compare(password, data[0].password);
         if (data.length > 0 && isPasswordCorrect) {
-            const token = jwt.sign({ email, id: data[0].id, first: data[0].first }, "login", {
+            const token = jwt.sign({ email, id: data[0].id, first: data[0].first, last: data[0].last }, "login", {
                 expiresIn: "1h",
             });
             toast.success('🦄 Đăng nhập thành công !', {

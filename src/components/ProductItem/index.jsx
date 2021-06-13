@@ -3,18 +3,18 @@ import Star from "../Star";
 
 import { IoEyeSharp } from "react-icons/io5";
 import { HiShoppingBag, HiHeart } from "react-icons/hi";
-
+import history from "../../until/history";
 import { Tooltip } from "antd";
 import "./styles.scss";
 
 const ProductItem = ({ data }) => {
-    let { name, rate, newPrice, oldPrice, news, img } = data;
+    let { name, rate, newPrice, oldPrice, news, img, id } = data;
     const sales = oldPrice && Math.ceil((1 - newPrice / oldPrice) * 100);
 
     return (
         <div className="product-item">
             <div className="product-item__img">
-                <a href="#" className="rotate-img">
+                <a href="" className="rotate-img">
                     <img src={img[0]} alt="anh" />
                     <img src={img[1]} alt="ANH" />
                 </a>
@@ -30,7 +30,10 @@ const ProductItem = ({ data }) => {
                         </Tooltip>
                     </span>
 
-                    <span className="icon icon-round product-item__widget-icon">
+                    <span
+                        onClick={() => history.push(`/product/${id}`)}
+                        className="icon icon-round product-item__widget-icon"
+                    >
                         <Tooltip placement="top" title="QUICKVIEW">
                             <IoEyeSharp />
                         </Tooltip>

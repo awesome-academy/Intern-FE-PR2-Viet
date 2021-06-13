@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductItem from "../../../../components/ProductItem";
+import history from "../../../../until/history";
 import "./style.scss";
 import { Col, Row } from "antd";
 import useWindowDimensions from "../../../../until/width";
@@ -69,6 +70,7 @@ const Slide = ({ data, type, xl, lg, md, sm, xs }) => {
 
             carouselContent.length === 2 && tempArr.push(carouselContent);
         }
+        console.log("slideProduct -> tempArr", tempArr);
         return tempArr.map((element, index) => (
             <Col sm={24} key={`col-${element.id}-${index}`}>
                 {element.map((item) => (
