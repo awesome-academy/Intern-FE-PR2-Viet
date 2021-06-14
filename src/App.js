@@ -6,10 +6,10 @@ import history from "./until/history";
 import "antd/dist/antd.css";
 import "./scss/styles.scss";
 
-import DefaultLayout from "./layouts/DefaultLayout";
 
 import Home from "./pages/User/Home";
-
+import DefaultLayout from "./layouts/DefaultLayout";
+import ProductDetail from "./pages/User/ProductDetail";
 import Login from "./pages/User/Login";
 import Register from "./pages/User/Register";
 import Products from "./pages/User/Products";
@@ -23,6 +23,7 @@ function App() {
                     <DefaultLayout exact path="/products/:collection" component={Products} />
                     <DefaultLayout exact path="/login" component={Login} />
                     <DefaultLayout exact path="/register" component={Register} />
+                    <DefaultLayout exact path="/product/:id" component={ProductDetail} />
                 </Switch>
             </Router>
         </div>
