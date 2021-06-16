@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { GiShoppingBag } from "react-icons/gi";
 import Slide from "../Home/Slide";
 import { FaTruckMoving, FaMoneyBillWave } from "react-icons/fa";
+import ImgCrop from "antd-img-crop";
 import {
     Row,
     Col,

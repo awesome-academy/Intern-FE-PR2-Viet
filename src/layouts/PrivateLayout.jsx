@@ -3,6 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Admin from "../pages/Admin";
 
 function PrivateLayout({ component: Component, role, ...props }) {
     const userInfo = JSON.parse(localStorage.getItem("profile"));
@@ -19,11 +20,13 @@ function PrivateLayout({ component: Component, role, ...props }) {
             {...props}
             render={(routerProps) => (
                 <>
-                    <Header {...routerProps} />
                     <div className="main">
-                        <Component {...routerProps} />
+                        <div id="admin">
+                            <Admin {...routerProps} />
+                            <Component {...routerProps} />
+                        </div>
                     </div>
-                    <Footer />
+                    {/* <Footer /> */}
                 </>
             )}
         />
