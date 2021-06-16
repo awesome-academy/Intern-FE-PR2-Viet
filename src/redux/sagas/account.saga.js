@@ -12,6 +12,12 @@ import {
     GET_USER_ACCOUNT,
     GET_USER_ACCOUNT_SUCCESS,
     GET_USER_ACCOUNT_FAIL,
+    EDIT_PROFILE,
+    EDIT_PROFILE_FAIL,
+    EDIT_PROFILE_SUCCESS,
+    GET_INFO,
+    GET_INFO_FAIL,
+    GET_INFO_SUCCESS
 } from "../constants";
 const apiURL = process.env.REACT_APP_API_URL;
 function* createAccountSaga(action) {
@@ -85,6 +91,22 @@ function* createAccountSaga(action) {
         });
     }
 }
+function* getInfoSaga(action) {
+    try {
+        const email = action.payload;
+        const response = yield axios.get(`${apiURL}/userList?email=${email}`)
+        const data = response.data[0];
+        yield put({
+            type: GET_INFO_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        yield put({
+            type: GET_INFO_FAIL,
+            payload: error,
+        });
+    }
+}
 function* loginSaga(action) {
     try {
         const { email, password } = action.payload;
@@ -154,8 +176,32 @@ function* loginSaga(action) {
         });
     }
 }
+function* editProfileSaga(action) {
+    try {
+        const { id, first, last, password, phone, address, token } = action.payload;
+        const response = yield axios.patch(`${apiURL}/userList/${id}`, {
+            last, first, phone, address, password
+        });
+        const data = response.data;
+
+        localStorage.setItem("profile", JSON.stringify({ ...data, token: token }));
+        yield put({
+            type: EDIT_PROFILE_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        yield put({
+            type: EDIT_PROFILE_FAIL,
+            payload: error,
+        });
+    }
+}
 
 export default function* accountSaga() {
     yield takeEvery(CREATE_ACCOUNT, createAccountSaga);
     yield takeEvery(GET_USER_ACCOUNT, loginSaga);
+    yield takeEvery(EDIT_PROFILE, editProfileSaga);
+    yield takeEvery(GET_INFO, getInfoSaga);
 }
+
+

@@ -23,12 +23,13 @@ import Navbar from "./Navbar";
 
 const { Option } = Select;
 
-const Header = ({ authData, getCartData, cartData, addCartData }) => {
+const Header = ({ getCartData, cartData, addCartData, userDataEdited }) => {
     const { t, i18n } = useTranslation();
     const location = useLocation();
     const [selectData, setSelectData] = useState([]);
     const [totalItemInCart, setTotalItemInCart] = useState(0);
     const [showNavbar, setShowNavbar] = useState(false);
+    const [authData, setAuthData] = useState();
     const options = selectData.map((d) => <Option key={d.value}>{d.text}</Option>);
     useEffect(() => {
         if (authData) getCartData({ user: authData.email });
@@ -45,6 +46,10 @@ const Header = ({ authData, getCartData, cartData, addCartData }) => {
             )
         );
     }, [cartData, location, addCartData]);
+
+    useEffect(() => {
+        setAuthData(() => JSON.parse(localStorage.getItem("profile")));
+    }, [location, userDataEdited]);
 
     const changeLanguage = (lang) => {
         i18n.changeLanguage(lang);
@@ -117,7 +122,10 @@ const Header = ({ authData, getCartData, cartData, addCartData }) => {
                                         />
                                     </div>
                                     <div className="header__widget--account-content">
-                                        <p className="header__widget--account-title">
+                                        <p
+                                            onClick={() => history.push("/profile")}
+                                            className="header__widget--account-title"
+                                        >
                                             {authData?.first + " " + authData?.last}
                                         </p>
                                         <p>
@@ -185,8 +193,10 @@ const Header = ({ authData, getCartData, cartData, addCartData }) => {
 
 const mapStateToProps = (state) => {
     const { cartData, addCartData } = state.cartReducer;
+    const { userDataEdited } = state.accountReducer;
 
     return {
+        userDataEdited,
         cartData,
         addCartData,
     };
