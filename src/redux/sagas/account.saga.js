@@ -316,6 +316,8 @@ function* editProfileSaga(action) {
     }
 }
 
+
+
 export default function* accountSaga() {
     yield takeEvery(CREATE_ACCOUNT, createAccountSaga);
     yield takeEvery(GET_USER_ACCOUNT, loginSaga);

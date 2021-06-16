@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getProductDetail, getInfo, createComment, getComment } from "../../../redux/actions";
+import { getProductDetail, getInfo, createComment, getComment, getBill } from "../../../redux/actions";
 import { AiFillHeart, AiOutlineIdcard } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
@@ -40,7 +40,10 @@ const ProductDetail = ({
     getComment,
     listComment,
     countComment,
+    billData,
+    getBill,
 }) => {
+    console.log("billData", billData);
     const product = productDetail.product;
     const sales = product?.oldPrice && Math.ceil((1 - product.newPrice / product.oldPrice) * 100);
     const rate = product?.rate;
@@ -67,6 +70,13 @@ const ProductDetail = ({
             limit: 10,
         });
     }, [listComment, current, productId]);
+
+    useEffect(() => {
+        getBill({
+            user: info.email,
+            isPayment: true,
+        });
+    }, []);
     const { Panel } = Collapse;
     comments.reverse();
     function callback(key) {
@@ -118,7 +128,7 @@ const ProductDetail = ({
 
     const handleSubmitForm = (value) => {};
     const handleSubmitFormComment = (value) => {
-        if (isPayment === true) {
+        if (billData.cartData.findIndex((item) => item.id == productId) !== -1) {
             createComment({
                 ...value,
                 idUser: infoUser.id,
@@ -436,12 +446,14 @@ const ProductDetail = ({
 const mapStateToProps = (state) => {
     const { productDetail, comments, listComment, countComment } = state.productDetailReducer;
     const { infoUser } = state.accountReducer;
+    const { billData } = state.paymentReducer;
     return {
         productDetail,
         infoUser,
         comments,
         listComment,
         countComment,
+        billData,
     };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -450,6 +462,7 @@ const mapDispatchToProps = (dispatch) => {
         getInfo: (params) => dispatch(getInfo(params)),
         createComment: (params) => dispatch(createComment(params)),
         getComment: (params) => dispatch(getComment(params)),
+        getBill: (params) => dispatch(getBill(params)),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

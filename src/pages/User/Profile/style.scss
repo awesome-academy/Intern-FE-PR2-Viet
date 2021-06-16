@@ -116,5 +116,38 @@ $border-input: #1890ff33;
         .name-order {
             text-align: center;
         }
+
+        table {
+            width: 100%;
+            thead {
+                background-color: $gray;
+            }
+            tr {
+                border-top: 1px solid $gray;
+                border-bottom: 1px solid $gray;
+                border-collapse: collapse;
+            }
+            td {
+                padding: 1rem;
+            }
+            tbody {
+                tr {
+                    td:first-child {
+                        padding-left: 1rem;
+                    }
+                    td {
+                        &:nth-child(6) {
+                            width: 20%;
+                            div {
+                                @include flex("", "", "", 3rem);
+                            }
+                        }
+                        &:nth-child(2) {
+                            width: 15%;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

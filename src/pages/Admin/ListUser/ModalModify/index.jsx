@@ -141,13 +141,6 @@ const ModalModify = ({ editUser, userEdit, item, isLoadingEdit, setLoading }) =>
                     </Formik>
                 </Modal>
             </div>
-            {/* {isLoadingEdit !== true ? (
-                ""
-            ) : (
-                <div className="example">
-                    <Spin />
-                </div>
-            )} */}
         </>
     );
 };

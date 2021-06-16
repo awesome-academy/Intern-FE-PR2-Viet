@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { connect } from "react-redux";
-import { editProfile, getInfo } from "../../../redux/actions";
+import { editProfile, getInfo, getBill } from "../../../redux/actions";
 import * as Yup from "yup";
 
 import history from "../../../until/history";
@@ -15,7 +15,8 @@ import "./style.scss";
 const { Panel } = Collapse;
 
 function Profile(prop) {
-    const { editProfile, infoUser, getInfo, userDataEdited } = prop;
+    const { editProfile, infoUser, getInfo, userDataEdited, getBill, billData } = prop;
+    console.log("Profile -> billData", billData);
     const { t } = useTranslation();
 
     const [userEdited, setUserEdited] = useState({});
@@ -29,6 +30,10 @@ function Profile(prop) {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("profile"));
         getInfo({ email: user.email });
+        getBill({
+            user: user.email,
+            isPayment: true,
+        });
     }, [userDataEdited]);
 
     useEffect(() => {
@@ -456,7 +461,37 @@ function Profile(prop) {
                             </div>
                         ) : (
                             <div>
-                                <Table dataSource={dataSource} columns={columns} />;
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td>STT</td>
+                                            <td>NAME</td>
+                                            <td>COUNT</td>
+                                            <td>ADDRESS</td>
+                                            <td>DATE</td>
+                                            <td>PRICE</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {billData?.cartData?.map((item, index) => (
+                                            <>
+                                                <tr>
+                                                    <td>{index + 1}</td>
+                                                    <td>
+                                                        <div className="name-order">
+                                                            <p>{item.name}</p>
+                                                            <img src={item.img[0]} alt="" />
+                                                        </div>
+                                                    </td>
+                                                    <td>{item.amount}</td>
+                                                    <td>{billData.address}</td>
+                                                    <td>{billData.date}</td>
+                                                    <td>{item.price}</td>
+                                                </tr>
+                                            </>
+                                        ))}
+                                    </tbody>
+                                </table>
                             </div>
                         )}
                     </div>
@@ -467,17 +502,21 @@ function Profile(prop) {
 }
 const mapStateToProps = (state) => {
     const { editProfile, infoUser, userList, userDataEdited } = state.accountReducer;
+    const { billData } = state.paymentReducer;
+
     return {
         editProfile,
         infoUser,
         userDataEdited,
         userList,
+        billData,
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         editProfile: (params) => dispatch(editProfile(params)),
         getInfo: (params) => dispatch(getInfo(params)),
+        getBill: (params) => dispatch(getBill(params)),
     };
 };
 
