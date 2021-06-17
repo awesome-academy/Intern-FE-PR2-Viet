@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Select, Drawer } from "antd";
+import { Select } from "antd";
+import { connect } from "react-redux";
+import { getCartData } from "../../redux/actions";
+import { useLocation } from "react-router-dom";
 
 import history from "../../until/history";
 import logo from "../../assets/images/logo.png";
@@ -20,30 +23,33 @@ import Navbar from "./Navbar";
 
 const { Option } = Select;
 
-const Header = ({ infoUser, setUser, isUser }) => {
+const Header = ({ authData, getCartData, cartData, addCartData }) => {
     const { t, i18n } = useTranslation();
-    const [currentLanguage, setCurrentLanguage] = useState(i18n && i18n.language);
+    const location = useLocation();
     const [selectData, setSelectData] = useState([]);
-    const [selectValue, setSelectValue] = useState([]);
+    const [totalItemInCart, setTotalItemInCart] = useState(0);
     const [showNavbar, setShowNavbar] = useState(false);
-
     const options = selectData.map((d) => <Option key={d.value}>{d.text}</Option>);
+    useEffect(() => {
+        if (authData) getCartData({ user: authData.email });
+    }, [authData]);
 
-    const handleSearch = (value) => {
-        if (value) {
-            setSelectData(value);
-        } else {
-            setSelectData({ data: [] });
-        }
-    };
+    useEffect(() => {
+        const cart = JSON.parse(localStorage.getItem("CartData"));
+        setTotalItemInCart(
+            cart?.reduce(
+                (total, currentValue) => {
+                    return parseInt(total) + currentValue.amount;
+                },
+                [0]
+            )
+        );
+    }, [cartData, location, addCartData]);
 
     const changeLanguage = (lang) => {
         i18n.changeLanguage(lang);
-        setCurrentLanguage(lang);
     };
-    const handleChange = (value) => {
-        setSelectValue(value);
-    };
+
     return (
         <header className="header">
             <section className="header__top">
@@ -62,7 +68,7 @@ const Header = ({ infoUser, setUser, isUser }) => {
                         </Select>
                     </div>
                     <div className="header__text">
-                        <span className="header__text--animation">{t("header_text.free")}</span>
+                        <span className="header__text--animation">{t("header_text.free")}</span>{" "}
                         {t("header_text.order")}
                     </div>
                 </div>
@@ -81,8 +87,6 @@ const Header = ({ infoUser, setUser, isUser }) => {
                                 defaultActiveFirstOption={false}
                                 showArrow={false}
                                 filterOption={false}
-                                // onSearch={handleSearch}
-                                // onChange={handleChange}
                                 notFoundContent={null}
                                 className="header__search--input"
                             >
@@ -102,27 +106,25 @@ const Header = ({ infoUser, setUser, isUser }) => {
                             <GiHamburgerMenu />
                         </div>
                         <div className="header__widget--account">
-                            {isUser ? (
+                            {authData ? (
                                 <>
                                     <div className="header__widget--item">
                                         <GiExitDoor
                                             onClick={() => {
                                                 history.push("/");
-                                                localStorage.clear("profile");
-                                                setUser(null);
+                                                localStorage.clear();
                                             }}
                                         />
                                     </div>
                                     <div className="header__widget--account-content">
                                         <p className="header__widget--account-title">
-                                            {infoUser?.first + " " + infoUser?.last}
+                                            {authData?.first + " " + authData?.last}
                                         </p>
                                         <p>
                                             <span
                                                 onClick={() => {
                                                     history.push("/");
-                                                    localStorage.clear("profile");
-                                                    setUser(null);
+                                                    localStorage.clear();
                                                 }}
                                                 className="header__widget--account-text"
                                             >
@@ -160,9 +162,13 @@ const Header = ({ infoUser, setUser, isUser }) => {
                             <AiOutlineHeart />
                             <span className="header__widget--item-count">0</span>
                         </div>
-                        <div className="header__widget--item">
+                        <div className="header__widget--item" onClick={() => history.push("/cart")}>
                             <HiOutlineShoppingBag />
-                            <span className="header__widget--item-count">4</span>
+                            {
+                                <span className="header__widget--item-count">
+                                    {totalItemInCart ? totalItemInCart : 0}
+                                </span>
+                            }
                         </div>
                     </div>
                 </div>
@@ -177,4 +183,17 @@ const Header = ({ infoUser, setUser, isUser }) => {
     );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+    const { cartData, addCartData } = state.cartReducer;
+
+    return {
+        cartData,
+        addCartData,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCartData: (params) => dispatch(getCartData(params)),
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

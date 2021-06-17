@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { getProducts, getTotalProducts } from "../../../redux/actions";
 import ProductItem from "../../../components/ProductItem";
 import useWindowDimensions from "../../../until/width";
+import Breadcrumb from "../../../components/Breadcrumb";
+import { ToastContainer, toast } from "react-toastify";
 
 const arrSelect = [
     { title: "Featured", value: "featured" },
@@ -94,20 +96,7 @@ const Products = ({ getProducts, productsData, getTotalProducts, totalProduct })
 
     return (
         <div className="products">
-            <section className="breadcrumb">
-                <div
-                    className="breadcrumb__container"
-                    style={{
-                        backgroundImage:
-                            "url('https://cdn.shopify.com/s/files/1/0412/8151/9765/files/breadcrumb.jpg?v=1593258636')",
-                    }}
-                >
-                    <div className="breadcrumb__content">
-                        <span>{t("Home")}</span>
-                        <span className="breadcrumb__text">{t(`category.Dairy & Chesse`)}</span>
-                    </div>
-                </div>
-            </section>
+            <Breadcrumb title="Collection" />
             <div className="container products__container">
                 <Row>
                     <Col xl={6} lg={7} md={8} sm={24} className="col-sm-100">
@@ -195,6 +184,7 @@ const Products = ({ getProducts, productsData, getTotalProducts, totalProduct })
                     </Col>
                 </Row>
             </div>
+            <ToastContainer />;
         </div>
     );
 };

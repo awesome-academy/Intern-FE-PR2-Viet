@@ -10,6 +10,19 @@
             &__item {
                 position: relative;
                 padding: 8px 0;
+
+                &:hover {
+                    .banner__img {
+                        img {
+                            transform: scale(1.1);
+                        }
+                        &::before,
+                        &::after {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                    }
+                }
             }
             &__img {
                 position: relative;
@@ -35,17 +48,6 @@
                     border-left: 1px solid $white;
                     border-right: 1px solid $white;
                     transform: scale(1, 0);
-                }
-
-                &:hover {
-                    img {
-                        transform: scale(1.1);
-                    }
-                    &::before,
-                    &::after {
-                        opacity: 1;
-                        transform: scale(1);
-                    }
                 }
             }
 

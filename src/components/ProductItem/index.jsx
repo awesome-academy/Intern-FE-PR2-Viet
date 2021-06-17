@@ -1,14 +1,54 @@
-import React from "react";
-import Star from "../Star";
-
+import React, { useEffect, useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import { HiShoppingBag, HiHeart } from "react-icons/hi";
 import history from "../../until/history";
+import { toast } from "react-toastify";
 import { Tooltip } from "antd";
+import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
+import { connect } from "react-redux";
+import { addCart, getCartData } from "../../redux/actions";
+import decode from "jwt-decode";
+import Star from "../Star";
 import "./styles.scss";
 
-const ProductItem = ({ data }) => {
-    let { name, rate, newPrice, oldPrice, news, img, id } = data;
+const ProductItem = ({ data, addCart }) => {
+    const { t } = useTranslation();
+
+    const [authData, setAuthData] = useState();
+    useEffect(() => {
+        setAuthData(() => JSON.parse(localStorage.getItem("profile")));
+    }, []);
+
+    const handleAddToCart = ({ id, name, newPrice, img }) => {
+        if (!authData) {
+            history.push("/login");
+        } else {
+            let arrData = [];
+            const productItem = { id, name, price: newPrice, img, amount: 1 };
+            const cartData = JSON.parse(localStorage.getItem("CartData"));
+            if (cartData.length) {
+                const findItem = cartData.find((item) => item.id === id);
+                if (findItem) {
+                    const indexItem = cartData.findIndex((item) => item.id === id);
+                    cartData.splice(indexItem, 1, { ...findItem, amount: parseInt(findItem.amount) + 1 });
+                    arrData = [...cartData];
+                } else arrData = [...cartData, productItem];
+            } else arrData.push(productItem);
+            addCart({ user: authData.email, cartData: [...arrData] });
+            toast.success(`😍 ${t("Add card success")}!`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    };
+
+    let { id, name, rate, newPrice, oldPrice, news, img } = data;
     const sales = oldPrice && Math.ceil((1 - newPrice / oldPrice) * 100);
 
     return (
@@ -24,8 +64,11 @@ const ProductItem = ({ data }) => {
                             <HiHeart />
                         </Tooltip>
                     </span>
-                    <span className="icon icon-round product-item__widget-icon">
-                        <Tooltip placement="top" title="ADD TO CARD">
+                    <span
+                        className="icon icon-round product-item__widget-icon"
+                        onClick={() => handleAddToCart(data)}
+                    >
+                        <Tooltip placement="top" title="ADD TO CART">
                             <HiShoppingBag />
                         </Tooltip>
                     </span>
@@ -60,4 +103,10 @@ const ProductItem = ({ data }) => {
     );
 };
 
-export default ProductItem;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addCart: (params) => dispatch(addCart(params)),
+        getCartData: (params) => dispatch(getCartData(params)),
+    };
+};
+export default connect(null, mapDispatchToProps)(ProductItem);

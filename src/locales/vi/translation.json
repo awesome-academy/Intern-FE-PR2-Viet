@@ -25,6 +25,8 @@
     "Online Support": "Hỗ trợ trực tuyến",
     "Address": "Địa chỉ",
     "Contact": "Liên hệ",
+    "Cart": "Giỏ hàng",
+    "Add card success": "Thêm vào giỏ hàng thành công",
     "Categories": {
         "Top_Categories": {
             "name": "Danh mục hàng đầu",
@@ -189,5 +191,22 @@
         "Quantity": "Số lượng",
         "Share": "Chia sẻ",
         "description": "Nó có quả nhỏ hơn quả bưởi, vỏ mỏng, khi chín thường có màu da cam, có vị ngọt hoặc hơi chua. Loài cam là một cây lai được trồng từ xưa, có thể lai giống giữa loài bưởi (Citrus maxima) và quýt (Citrus reticulata)."
+    },
+    "cart": {
+        "Yes": "Đồng ý",
+        "No": "Huỷ",
+        "Are you sure delete this product?": "Bạn có muốn xoá sản phẩm này không?",
+        "Warning": "Cảnh báo",
+        "You can only order up to 30 products": "Bạn chỉ có thể mua tối đa 30 sản phẩm.",
+        "My Cart": "Giỏ hàng của tôi",
+        "item": "Sản phẩm",
+        "Size": "Kích thước",
+        "Clear Cart": "Dọn dẹp giỏ hàng",
+        "Continue Shopping": "Tiếp tục mua sắm",
+        "Subtotal": "Tổng phụ",
+        "Total": "Tổng",
+        "Shipping Info": "Thông tin vận chuyển",
+        "Country": "Quốc gia",
+        "Zip/Postal code": "Mã zip / mã bưu điện"
     }
 }

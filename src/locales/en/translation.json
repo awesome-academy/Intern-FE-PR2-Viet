@@ -24,6 +24,8 @@
     "Online Support": "Online Support",
     "Address": "Address",
     "Contact": "Contact",
+    "Cart": "Cart",
+    "Add card success": "Add card success",
     "Categories": {
         "Top_Categories": {
             "name": "Top Categories",
@@ -192,5 +194,22 @@
         "Quantity": "Quantity",
         "Share": "Share",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and"
+    },
+    "cart": {
+        "Yes": "Yes",
+        "No": "No",
+        "Are you sure delete this product?": "Are you sure delete this product?",
+        "Warning": "Warning",
+        "You can only order up to 30 products": "You can only order up to 30 products.",
+        "My Cart": "My Cart",
+        "item": "Item",
+        "Size": "Size",
+        "Clear Cart": "Clear Cart",
+        "Continue Shopping": "Continue Shopping",
+        "Subtotal": "Subtotal",
+        "Total": "Total",
+        "Shipping Info": "Shipping Info",
+        "Country": "Country",
+        "Zip/Postal code": "Zip/Postal code"
     }
 }
