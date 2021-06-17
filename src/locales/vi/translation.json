@@ -207,6 +207,9 @@
         "Total": "Tổng",
         "Shipping Info": "Thông tin vận chuyển",
         "Country": "Quốc gia",
-        "Zip/Postal code": "Mã zip / mã bưu điện"
+        "Zip/Postal code": "Mã zip / mã bưu điện",
+        "The shopping cart has no products": "Giỏ hàng chưa có sản phẩm nào",
+        "Do you want to delete all products": "Bạn có muốn xoá tất cả sản phẩm không?",
+        "Checkout": "Thanh toán"
     }
 }

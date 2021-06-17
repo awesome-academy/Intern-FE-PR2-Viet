@@ -6,7 +6,7 @@ import { GET_PRODUCT_DETAIL, GET_PRODUCT_DETAIL_FAIL, GET_PRODUCT_DETAIL_SUCCESS
 const apiURL = process.env.REACT_APP_API_URL;
 
 function* getProductDetailSaga(action) {
-    const productId = action.payload
+    const productId = action.payload;
     try {
         const response = yield axios({
             method: "GET",
@@ -18,9 +18,8 @@ function* getProductDetailSaga(action) {
         });
         const data = {
             product: response.data[0],
-            relatedProduct: responseNew.data
+            relatedProduct: responseNew.data,
         };
-        console.log("function*getProductDetailSaga -> data", data)
         yield put({
             type: GET_PRODUCT_DETAIL_SUCCESS,
             payload: data,

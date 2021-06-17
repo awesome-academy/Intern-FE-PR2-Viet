@@ -210,6 +210,9 @@
         "Total": "Total",
         "Shipping Info": "Shipping Info",
         "Country": "Country",
-        "Zip/Postal code": "Zip/Postal code"
+        "Zip/Postal code": "Zip/Postal code",
+        "The shopping cart has no products": "The shopping cart has no products",
+        "Do you want to delete all products": "Do you want to delete all products?",
+        "Checkout": "Checkout"
     }
 }
