@@ -220,6 +220,7 @@
         "confirm": "Xác nhận mật khẩu",
         "confirm_pw": "Mật khẩu bạn nhập đã trùng với mật khẩu cũ !",
         "confirm_pwNew": "Mật khẩu không giống !",
+        "max": "Không được quá 20 kí tự !",
         "submit": "Submit",
         "account": {
             "title": "Chi tiết tài khoản",

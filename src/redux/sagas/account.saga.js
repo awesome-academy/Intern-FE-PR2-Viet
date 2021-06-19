@@ -93,7 +93,7 @@ function* createAccountSaga(action) {
 }
 function* getInfoSaga(action) {
     try {
-        const email = action.payload;
+        const { email } = action.payload;
         const response = yield axios.get(`${apiURL}/userList?email=${email}`)
         const data = response.data[0];
         yield put({
@@ -184,7 +184,7 @@ function* editProfileSaga(action) {
         });
         const data = response.data;
 
-        localStorage.setItem("profile", JSON.stringify({ ...data, token: token }));
+        localStorage.setItem("profile", JSON.stringify({ ...data, password: "", token: token }));
         yield put({
             type: EDIT_PROFILE_SUCCESS,
             payload: data,

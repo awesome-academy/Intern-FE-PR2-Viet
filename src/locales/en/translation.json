@@ -224,6 +224,7 @@
         "confirm": "Confirm Password",
         "confirm_pw": "The password you entered is the same as the old password !",
         "confirm_pwNew": "Password don't matches !",
+        "max": "No more than 20 characters !",
         "submit": "Submit",
         "account": {
             "title": "Account Detail",
