@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "antd";
-import "./styles.scss";
+import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { getCartData } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
@@ -8,6 +8,7 @@ import "./styles.scss";
 
 const InfoCart = ({ getCartData, cartData }) => {
     const location = useLocation();
+    const { t } = useTranslation();
     const [infoUser, setInfoUser] = useState(JSON.parse(localStorage.getItem("profile")));
     useEffect(() => {
         getCartData({ user: infoUser.email });
@@ -43,34 +44,38 @@ const InfoCart = ({ getCartData, cartData }) => {
                 <table className="infoCart__cart">{renderCartData(cartData)}</table>
                 <div className="infoCart__discount">
                     <form>
-                        <Input className="input" type="text" placeholder="Discount code"></Input>
+                        <Input
+                            className="input"
+                            type="text"
+                            placeholder={t("infoCart.Discount code")}
+                        ></Input>
                         <button className="button" type="button">
-                            Apply
+                            {t("infoCart.Apply")}
                         </button>
                     </form>
                 </div>
                 <div className="infoCart__price">
                     <div className="infoCart__price--item">
-                        <h4>Subtotal</h4>
+                        <h4>{t("infoCart.Subtotal")}</h4>
                         <p>{handleCalculateToTal(cartData).toLocaleString()}</p>
                     </div>
                     <div className="infoCart__price--item">
-                        <h4>Shipping</h4>
+                        <h4>{t("infoCart.Shipping cost")}</h4>
                         <p>
-                            {location.pathname === "/payment"
+                            {location.pathname === "/shipping"
                                 ? parseInt(20000).toLocaleString()
-                                : "Calculated at next step"}
+                                : t("infoCart.Calculated at next step")}
                         </p>
                     </div>
                     <div className="infoCart__price--total">
-                        <h4>Total</h4>
+                        <h4>{t("infoCart.Total")}</h4>
                         <p>
                             VND{" "}
                             <span>
                                 $
                                 {(
                                     handleCalculateToTal(cartData) +
-                                    (location.pathname === "/payment" ? 20000 : 0)
+                                    (location.pathname === "/shipping" ? 20000 : 0)
                                 ).toLocaleString()}
                             </span>
                         </p>

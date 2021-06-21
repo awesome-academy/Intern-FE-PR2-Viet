@@ -11,5 +11,8 @@
         &--active {
             color: $primary-color;
         }
+        @include respond-to("sm") {
+            font-size: 1.2rem;
+        }
     }
 }

@@ -15,9 +15,10 @@ import Register from "./pages/User/Register";
 import Products from "./pages/User/Products";
 import Cart from "./pages/User/Cart";
 import Information from "./pages/User/Payment/Information";
+import Profile from "./pages/User/Profile";
+import Shipping from "./pages/User/Payment/Shipping";
 import Payment from "./pages/User/Payment/Payment";
 
-import Profile from "./pages/User/Profile";
 function App() {
     return (
         <div className="App">
@@ -31,6 +32,7 @@ function App() {
                     <DefaultLayout exact path="/product/:id" component={ProductDetail} />
                     <DefaultLayout exact path="/profile" component={Profile} />
                     <PaymentLayout exact path="/infoPayment" component={Information} />
+                    <PaymentLayout exact path="/shipping" component={Shipping} />
                     <PaymentLayout exact path="/payment" component={Payment} />
                 </Switch>
             </Router>
