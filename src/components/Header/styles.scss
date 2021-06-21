@@ -1,6 +1,10 @@
 @import "../../scss/utilities/mixin";
 @import "../../scss/utilities/variables";
 .header {
+    .header__widget--account-title,
+    .logo {
+        cursor: pointer;
+    }
     .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
         .ant-select-selector {
         box-shadow: none;
@@ -140,7 +144,7 @@
             @include respond-to("lg") {
                 display: none;
             }
-            &-text{
+            &-text {
                 cursor: pointer;
             }
         }

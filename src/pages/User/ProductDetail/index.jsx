@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getProductDetail } from "../../../redux/actions";
+import { getProductDetail, getInfo, createComment, getComment } from "../../../redux/actions";
 import { AiFillHeart, AiOutlineIdcard } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
+import { ToastContainer, toast } from "react-toastify";
 
 import { GiShoppingBag } from "react-icons/gi";
 import Slide from "../Home/Slide";
@@ -21,59 +22,59 @@ import {
     Form,
     Radio,
     InputNumber,
+    Pagination,
 } from "antd";
 import moment from "moment";
 
 import "./style.scss";
 
-const ProductDetail = ({ match, getProductDetail, productDetail }) => {
+const ProductDetail = ({
+    createComment,
+    match,
+    getProductDetail,
+    productDetail,
+    getInfo,
+    infoUser,
+    comments,
+    getComment,
+    listComment,
+    countComment,
+}) => {
     const product = productDetail.product;
     const sales = product?.oldPrice && Math.ceil((1 - product.newPrice / product.oldPrice) * 100);
     const rate = product?.rate;
     const productId = match.params.id;
+    const [info, setInfo] = useState(JSON.parse(localStorage.getItem("profile")));
+    const [rateValue, setRateValue] = useState();
+    const [isShowFormComment, setIsShowFormComment] = useState(false);
+    const [isPayment, setIsPayment] = useState(true);
+    const [current, setCurrent] = useState(1);
     const { t } = useTranslation();
     const { TabPane } = Tabs;
+
+    const success = (value) => toast(`🦄 ${value}`);
+    const error = (value) => toast.error(`🦄 ${value}`);
+
     useEffect(() => {
         getProductDetail(productId);
-    }, []);
-
+        getInfo(info.email);
+    }, [productId]);
+    useEffect(() => {
+        getComment({
+            id: productId,
+            page: current,
+            limit: 10,
+        });
+    }, [listComment, current, productId]);
     const { Panel } = Collapse;
+    comments.reverse();
+    function callback(key) {
+        setIsShowFormComment(!isShowFormComment);
+    }
+    function handleChangRate(value) {
+        setRateValue(value);
+    }
 
-    function callback(key) {}
-    function handleChangRate(value) {}
-
-    const data = [
-        {
-            author: <p>HandSolo</p>,
-            avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-            content: (
-                <span>
-                    We supply a series of design principles, practical patterns and high quality design
-                    resources (Sketch and Axure)
-                </span>
-            ),
-            datetime: (
-                <Tooltip title={moment().subtract(1, "days").format("YYYY-MM-DD HH:mm:ss")}>
-                    <span>{moment().subtract(1, "days").fromNow()}</span>
-                </Tooltip>
-            ),
-        },
-        {
-            author: <p>HandSolo</p>,
-            avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-            content: (
-                <span>
-                    We supply a series of design principles, practical patterns and high quality design
-                    resources (Sketch and Axure)
-                </span>
-            ),
-            datetime: (
-                <Tooltip title={moment().subtract(2, "days").format("YYYY-MM-DD HH:mm:ss")}>
-                    <span>{moment().subtract(2, "days").fromNow()}</span>
-                </Tooltip>
-            ),
-        },
-    ];
     const service = [
         {
             id: 1,
@@ -114,7 +115,24 @@ const ProductDetail = ({ match, getProductDetail, productDetail }) => {
         },
     ];
 
-    const handleSubmitForm = () => {};
+    const handleSubmitForm = (value) => {};
+    const handleSubmitFormComment = (value) => {
+        if (isPayment === true) {
+            createComment({
+                ...value,
+                idUser: infoUser.id,
+                idProduct: productId,
+                name: `${infoUser.first + infoUser.last}`,
+                datetime: moment().format("YYYY-MM-DD HH:mm:ss"),
+                rate: rateValue,
+            });
+            success("Thanks for your comment !");
+            setIsShowFormComment(false);
+        } else {
+            error("You didn't bought this product ago !");
+            setIsShowFormComment(false);
+        }
+    };
     const renderProductDetail = () => {
         return (
             <>
@@ -289,7 +307,13 @@ const ProductDetail = ({ match, getProductDetail, productDetail }) => {
                                 <div className="review__content">
                                     <p>{t("productDetail.Review__customer")}</p>
                                     <Rate disabled defaultValue={5} />
-                                    <Collapse destroyInactivePanel ghost bordered={false} onChange={callback}>
+                                    <Collapse
+                                        activeKey={`${isShowFormComment === true ? 1 : ""}`}
+                                        destroyInactivePanel
+                                        ghost
+                                        bordered={false}
+                                        onChange={callback}
+                                    >
                                         <Panel
                                             showArrow={false}
                                             header={
@@ -298,7 +322,7 @@ const ProductDetail = ({ match, getProductDetail, productDetail }) => {
                                             key="1"
                                         >
                                             <div className="review__content--form">
-                                                <Form>
+                                                <Form onFinish={handleSubmitFormComment}>
                                                     <p>{t("productDetail.Review__rating")}</p>
                                                     <Rate onChange={(value) => handleChangRate(value)} />
                                                     <p>{t("productDetail.Review__title")}</p>
@@ -340,20 +364,48 @@ const ProductDetail = ({ match, getProductDetail, productDetail }) => {
                                     </Collapse>
                                     <List
                                         className="comment-list"
-                                        header={`${data.length} replies`}
+                                        header={`${countComment} replies`}
                                         itemLayout="horizontal"
-                                        dataSource={data}
+                                        dataSource={comments}
                                         renderItem={(item) => (
                                             <li>
                                                 <Comment
-                                                    author={item.author}
-                                                    avatar={item.avatar}
-                                                    content={item.content}
-                                                    datetime={item.datetime}
+                                                    author={item.name}
+                                                    avatar={
+                                                        "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                                    }
+                                                    content={
+                                                        <>
+                                                            <div>
+                                                                <Rate disabled value={item.rate} />
+                                                            </div>
+                                                            <div>
+                                                                <p>{item.title}</p>
+                                                                <span>{item.content}</span>
+                                                            </div>
+                                                        </>
+                                                    }
+                                                    datetime={
+                                                        <Tooltip title={item.datetime}>
+                                                            <span>{item.datetime}</span>
+                                                        </Tooltip>
+                                                    }
+                                                    rate={item.rate}
                                                 />
                                             </li>
                                         )}
                                     />
+                                    {countComment > 0 && (
+                                        <Pagination
+                                            total={countComment}
+                                            defaultCurrent={1}
+                                            current={current}
+                                            onChange={(page) => {
+                                                setCurrent(page);
+                                                window.scrollTo(0, 0);
+                                            }}
+                                        />
+                                    )}
                                 </div>
                             </TabPane>
                         </Tabs>
@@ -381,14 +433,22 @@ const ProductDetail = ({ match, getProductDetail, productDetail }) => {
 };
 
 const mapStateToProps = (state) => {
-    const { productDetail } = state.productDetailReducer;
+    const { productDetail, comments, listComment, countComment } = state.productDetailReducer;
+    const { infoUser } = state.accountReducer;
     return {
         productDetail,
+        infoUser,
+        comments,
+        listComment,
+        countComment,
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         getProductDetail: (params) => dispatch(getProductDetail(params)),
+        getInfo: (params) => dispatch(getInfo(params)),
+        createComment: (params) => dispatch(createComment(params)),
+        getComment: (params) => dispatch(getComment(params)),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

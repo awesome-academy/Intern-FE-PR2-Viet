@@ -19,14 +19,16 @@ function Profile(prop) {
     const { t } = useTranslation();
 
     const [userEdited, setUserEdited] = useState({});
-    console.log("Profile -> userEdited", userEdited);
     const [editable, setEditable] = useState(false);
     const [isShowChangePw, setIsShowChangePw] = useState(false);
     const [isPayment, setIsPayment] = useState(true);
 
+    const success = (value) => toast.success(`🦄 ${value}`);
+    const error = (value) => toast.error(`🦄 ${value}`);
+
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("profile"));
-        getInfo(user.email);
+        getInfo({ email: user.email });
     }, [userDataEdited]);
 
     useEffect(() => {
@@ -41,15 +43,7 @@ function Profile(prop) {
         });
         setUserEdited(value);
         setEditable(!editable);
-        toast.success("🦄 Successful change of information !", {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        success("Successful change of information !");
     };
 
     const handleSubmitPassword = async (values) => {
@@ -62,26 +56,10 @@ function Profile(prop) {
                 password: hashedPassword,
                 token: JSON.parse(localStorage.getItem("profile")).token,
             });
-            toast.success("🦄 Change password successfully !", {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            success("Change password successfully !");
             setIsShowChangePw(false);
         } else {
-            toast.error("🦄 The password you entered is incorrect !", {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            error("The password you entered is incorrect !");
         }
     };
 
@@ -93,7 +71,7 @@ function Profile(prop) {
         {
             id: 1,
             title: t("Profile.account.first"),
-            content: `${userEdited?.first + userEdited?.last}`,
+            content: `${userEdited?.first + " " + userEdited?.last}`,
             type: "name",
             last: "last",
         },
@@ -307,7 +285,14 @@ function Profile(prop) {
                                             </Collapse>
                                         </li>
                                         <li>
-                                            <span>{t("Logout")}</span>
+                                            <span
+                                                onClick={() => {
+                                                    history.push("/");
+                                                    localStorage.clear();
+                                                }}
+                                            >
+                                                {t("Logout")}
+                                            </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -328,17 +313,11 @@ function Profile(prop) {
                                                 enableReinitialize
                                                 validationSchema={Yup.object({
                                                     first: Yup.string()
-                                                        .required("Nội dung công việc không được để trống")
-                                                        .max(
-                                                            50,
-                                                            "Nội dung công việc không được quá 50 kí tự"
-                                                        ),
+                                                        .required(t("validate.first"))
+                                                        .max(20, t("Profile.max")),
                                                     last: Yup.string()
-                                                        .required("Nội dung công việc không được để trống")
-                                                        .max(
-                                                            50,
-                                                            "Nội dung công việc không được quá 50 kí tự"
-                                                        ),
+                                                        .required(t("validate.last"))
+                                                        .max(20, t("Profile.max")),
                                                     phone: Yup.string().matches(
                                                         /(84|0[3|5|7|8|9])+([0-9]{8})\b/,
                                                         "Invalid phone number !"
