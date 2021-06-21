@@ -211,5 +211,30 @@
         "The shopping cart has no products": "Giỏ hàng chưa có sản phẩm nào",
         "Do you want to delete all products": "Bạn có muốn xoá tất cả sản phẩm không?",
         "Checkout": "Thanh toán"
+    },
+    "Profile": {
+        "welcome": "Chào mừng",
+        "edit": "Thay đổi mật khẩu",
+        "inner": "Mật khẩu hiện tại",
+        "new": "Mật khẩu mới",
+        "confirm": "Xác nhận mật khẩu",
+        "confirm_pw": "Mật khẩu bạn nhập đã trùng với mật khẩu cũ !",
+        "confirm_pwNew": "Mật khẩu không giống !",
+        "submit": "Submit",
+        "account": {
+            "title": "Chi tiết tài khoản",
+            "name": "Tên",
+            "address": "Địa chỉ",
+            "phone": "Số điện thoại",
+            "edit": "CHỈNH SỬA",
+            "first": "Tên",
+            "last": "Họ",
+            "cancel": "Đóng",
+            "save": "Lưu"
+        }
+    },
+    "orderHistory": {
+        "title": "Lịch sử đặt hàng",
+        "content": "Bạn chưa đặt sản phảm nào !"
     }
 }

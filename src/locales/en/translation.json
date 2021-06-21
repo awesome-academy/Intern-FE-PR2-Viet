@@ -214,5 +214,31 @@
         "The shopping cart has no products": "The shopping cart has no products",
         "Do you want to delete all products": "Do you want to delete all products?",
         "Checkout": "Checkout"
+    },
+
+    "Profile": {
+        "welcome": "Welcome",
+        "edit": "Edit password",
+        "inner": "Inner Password",
+        "new": "New Password",
+        "confirm": "Confirm Password",
+        "confirm_pw": "The password you entered is the same as the old password !",
+        "confirm_pwNew": "Password don't matches !",
+        "submit": "Submit",
+        "account": {
+            "title": "Account Detail",
+            "name": "Name",
+            "address": "Address",
+            "phone": "Phone numbers",
+            "edit": "EDIT PROFILE",
+            "first": "First Name",
+            "last": "Last Name",
+            "cancel": "Cancel",
+            "save": "Save"
+        }
+    },
+    "orderHistory": {
+        "title": "Order History",
+        "content": "You haven't placed any orders yet !"
     }
 }
