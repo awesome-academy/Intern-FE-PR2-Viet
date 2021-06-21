@@ -20,7 +20,11 @@ const PaymentBreadcrumb = () => {
             </span>
             <FiChevronRight />
             <span
-                className={` ${location.pathname === "/shipping" ? "payment__breadcrumb--active" : ""}`}
+                className={` ${
+                    location.pathname === "/shipping" || location.pathname === "/payment"
+                        ? "payment__breadcrumb--active"
+                        : ""
+                }`}
                 onClick={() => history.push("/shipping")}
             >
                 {t("payments.breadcrumb.Shipping")}

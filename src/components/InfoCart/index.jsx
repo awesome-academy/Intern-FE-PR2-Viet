@@ -62,7 +62,7 @@ const InfoCart = ({ getCartData, cartData }) => {
                     <div className="infoCart__price--item">
                         <h4>{t("infoCart.Shipping cost")}</h4>
                         <p>
-                            {location.pathname === "/shipping"
+                            {location.pathname === "/shipping" || location.pathname === "/payment"
                                 ? parseInt(20000).toLocaleString()
                                 : t("infoCart.Calculated at next step")}
                         </p>
@@ -75,7 +75,9 @@ const InfoCart = ({ getCartData, cartData }) => {
                                 $
                                 {(
                                     handleCalculateToTal(cartData) +
-                                    (location.pathname === "/shipping" ? 20000 : 0)
+                                    (location.pathname === "/shipping" || location.pathname === "/payment"
+                                        ? 20000
+                                        : 0)
                                 ).toLocaleString()}
                             </span>
                         </p>
