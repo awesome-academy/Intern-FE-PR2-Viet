@@ -22,12 +22,14 @@ const Information = ({ getInfo, infoUser, cartData, createBill }) => {
 
     const handleSubmitForm = (values) => {
         const { firstName, lastName, ...other } = values;
+        const paymentCode = `ARYA${infoUser.id}${Math.floor(Math.random() * values.zipCode + infoUser.id)}`;
         const dataForm = {
             user: user.email,
             name: `${firstName} ${lastName}`,
             ...other,
             country: valueSelect,
             cartData: [...cartData],
+            paymentCode,
         };
         createBill({ ...dataForm });
     };

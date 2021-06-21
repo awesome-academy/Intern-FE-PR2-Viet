@@ -42,7 +42,7 @@
                 gap: 2rem;
 
                 h4 {
-                    width: 6rem;
+                    min-width: 6rem;
                 }
             }
             button {
@@ -53,7 +53,14 @@
         }
         &__title {
             padding: 4rem 0 2rem;
-            font-size: 1.6rem;
+            h2 {
+                font-size: 1.6rem;
+            }
+            p {
+                padding-top: 0.7rem;
+                font-size: 1.3rem;
+                font-weight: 300;
+            }
         }
         &__btn {
             padding: 3rem 0;
@@ -65,6 +72,35 @@
                 position: relative;
                 z-index: 9;
                 text-transform: capitalize !important;
+            }
+        }
+    }
+    .payments {
+        &__warning {
+            background-color: $bgc-be;
+            &--inner {
+                justify-content: flex-start;
+                svg {
+                    font-size: 2.4rem;
+                    color: $brown;
+                }
+            }
+        }
+        &__content {
+            margin-top: 2rem;
+            border-radius: 8px;
+            border: 1px solid $border-color;
+        }
+        &__item {
+            @extend .shipping__content--item;
+            padding: 1.5rem;
+            &:not(:first-child) {
+                margin-top: 0 !important;
+            }
+
+            svg {
+                font-size: 2.5rem;
+                color: $primary-color;
             }
         }
     }

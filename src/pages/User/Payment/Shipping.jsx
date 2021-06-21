@@ -1,18 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PaymentBreadcrumb from "./component/PaymentBreadcrumb";
 import { Radio } from "antd";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { getBillTemp } from "../../../redux/actions";
+import { getBill, updateBill } from "../../../redux/actions";
 import "./styles.scss";
 import history from "../../../until/history";
-const Shipping = ({ getBillTemp, billTempData }) => {
+const Shipping = ({ getBill, billData, updateBill }) => {
     const { t } = useTranslation();
-
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("profile"));
-        getBillTemp({ user: user.email });
+        getBill({ user: user.email, isPayment: false });
     }, []);
+
+    const handelUpdateBill = () => {
+        updateBill({
+            id: billData.id,
+            method: "Standard",
+            shippingCost: 20000,
+        });
+        history.push("/payment");
+    };
+
     return (
         <div className="payment-page">
             <div className="container payment__container">
@@ -24,19 +33,26 @@ const Shipping = ({ getBillTemp, billTempData }) => {
                             <div className=" shipping__content--item">
                                 <div className="shipping__info--inner">
                                     <h4>{t("payments.shipping.Contact")}</h4>
-                                    <p>{billTempData.email}</p>
+                                    <p>{billData.email}</p>
                                 </div>
-                                <button className="button">{t("payments.shipping.Change")}</button>
+                                <button className="button" onClick={() => history.push("/infoPayment")}>
+                                    {t("payments.shipping.Change")}
+                                </button>
                             </div>
                             <div className=" shipping__content--item">
                                 <div className="shipping__info--inner">
                                     <h4>{t("payments.shipping.Ship to")}</h4>
-                                    <p>{billTempData.address}</p>
+                                    <p>{billData.address}</p>
                                 </div>
-                                <button className="button">{t("payments.shipping.Change")}</button>
+                                <button className="button" onClick={() => history.push("/infoPayment")}>
+                                    {t("payments.shipping.Change")}
+                                </button>
                             </div>
                         </div>
-                        <h3 className="shipping__title">{t("payments.shipping.Shipping method")}</h3>
+
+                        <div className="shipping__title">
+                            <h3>{t("payments.shipping.Shipping method")}</h3>
+                        </div>
                         <div className="shipping__method shipping__content  ">
                             <div className="shipping__content--item">
                                 <Radio checked>{t("payments.shipping.Standard")}</Radio>
@@ -46,7 +62,7 @@ const Shipping = ({ getBillTemp, billTempData }) => {
                         <div className="shipping__btn">
                             <button
                                 className="button  button-animation--1 button-round--lg "
-                                onClick={() => history.push("/payment")}
+                                onClick={() => handelUpdateBill()}
                             >
                                 <span> {t("payments.shipping.Continue to payment")}</span>
                             </button>
@@ -65,13 +81,15 @@ const Shipping = ({ getBillTemp, billTempData }) => {
 };
 
 const mapStateToProps = (state) => {
-    const { billTempData } = state.paymentReducer;
-    return { billTempData };
+    const { billData } = state.paymentReducer;
+
+    return { billData };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getBillTemp: (params) => dispatch(getBillTemp(params)),
+        getBill: (params) => dispatch(getBill(params)),
+        updateBill: (params) => dispatch(updateBill(params)),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Shipping);

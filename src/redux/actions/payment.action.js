@@ -1,4 +1,4 @@
-import { CREATE_BILL, GET_BILL_TEMP, UPDATE_SUCCESS_BILL } from "../constants";
+import { CREATE_BILL, GET_BILL, UPDATE_BILL } from "../constants";
 
 export function createBill(params) {
     return {
@@ -6,15 +6,15 @@ export function createBill(params) {
         payload: params,
     };
 }
-export function getBillTemp(params) {
+export function getBill(params) {
     return {
-        type: GET_BILL_TEMP,
+        type: GET_BILL,
         payload: params,
     };
 }
-export function updateSuccessBill(params) {
+export function updateBill(params) {
     return {
-        type: UPDATE_SUCCESS_BILL,
+        type: UPDATE_BILL,
         payload: params,
     };
 }

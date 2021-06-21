@@ -18,6 +18,7 @@ import Information from "./pages/User/Payment/Information";
 import Profile from "./pages/User/Profile";
 import Shipping from "./pages/User/Payment/Shipping";
 import Payment from "./pages/User/Payment/Payment";
+import Success from "./pages/User/Success";
 
 function App() {
     return (
@@ -31,6 +32,8 @@ function App() {
                     <DefaultLayout exact path="/register" component={Register} />
                     <DefaultLayout exact path="/product/:id" component={ProductDetail} />
                     <DefaultLayout exact path="/profile" component={Profile} />
+                    <DefaultLayout exact path="/success/:id" component={Success} />
+
                     <PaymentLayout exact path="/infoPayment" component={Information} />
                     <PaymentLayout exact path="/shipping" component={Shipping} />
                     <PaymentLayout exact path="/payment" component={Payment} />
