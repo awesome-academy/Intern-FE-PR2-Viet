@@ -2,7 +2,7 @@ import { ADD_CART_FAIL, ADD_CART_SUCCESS, GET_CART_FAIL, GET_CART_SUCCESS } from
 
 const initialState = {
     addCartData: {},
-    cartData: [],
+    cartData: {},
 };
 
 export default function cartReducer(state = initialState, action) {
@@ -18,7 +18,7 @@ export default function cartReducer(state = initialState, action) {
         case GET_CART_SUCCESS:
             return {
                 ...state,
-                cartData: [...action.payload],
+                cartData: { ...action.payload },
             };
         case GET_CART_FAIL: {
             return state;

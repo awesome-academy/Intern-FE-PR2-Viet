@@ -26,10 +26,11 @@ const Information = ({ getInfo, infoUser, cartData, createBill }) => {
         const dataForm = {
             user: user.email,
             name: `${firstName} ${lastName}`,
-            ...other,
             country: valueSelect,
-            cartData: [...cartData],
+            cartData: [...cartData.cartData],
+            cartId: cartData.id,
             paymentCode,
+            ...other,
         };
         createBill({ ...dataForm });
     };

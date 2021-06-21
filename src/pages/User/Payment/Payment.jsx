@@ -28,6 +28,7 @@ const Payment = ({ getBill, billData, updateBill, getCartData }) => {
             date,
             isPayment: true,
             type: "success",
+            cartId: billData.cartId,
         });
         getCartData({ user: billData.user });
         history.push(`/success/${billData.id}`);

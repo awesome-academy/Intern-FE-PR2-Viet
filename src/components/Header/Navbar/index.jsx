@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Select, Drawer } from "antd";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 import history from "../../../until/history";
 
@@ -111,6 +112,7 @@ const navbarData = [
 ];
 
 const Navbar = ({ setShowNavbar, showNavbar }) => {
+    const location = useLocation();
     const { t } = useTranslation();
     const [isActive, setIsActive] = useState(1);
     const [isActiveMobile, setIsActiveMobile] = useState({});
@@ -132,7 +134,7 @@ const Navbar = ({ setShowNavbar, showNavbar }) => {
         return data.map((item, index) => (
             <li
                 key={`navbar__item-${item.id}`}
-                className={`navbar__item ${isActive === item.id && isActive && "navbar__item--active"}`}
+                className={`navbar__item ${location.pathname === item.path ? "navbar__item--active" : ""}`}
             >
                 <button
                     className="navbar__item--link button"

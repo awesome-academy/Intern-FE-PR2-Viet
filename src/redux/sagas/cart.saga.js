@@ -49,7 +49,7 @@ function* getCartDataSaga(action) {
         const dataCart = data[0]?.cartData || [];
         yield put({
             type: GET_CART_SUCCESS,
-            payload: dataCart,
+            payload: data[0],
         });
         localStorage.setItem("CartData", JSON.stringify(dataCart));
     } catch (error) {
