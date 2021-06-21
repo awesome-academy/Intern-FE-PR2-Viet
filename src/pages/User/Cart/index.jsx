@@ -95,11 +95,11 @@ const Cart = ({ addCartData, cartData, addCart, getCartData }) => {
                                 <div className="cart__price--subtotal">
                                     <div className="cart__price--subtotal-item">
                                         <h4>{t("cart.Subtotal")}</h4>
-                                        <p>${handleCalculateToTal().toLocaleString()} USD</p>
+                                        <p>${handleCalculateToTal().toLocaleString()} VND</p>
                                     </div>
                                     <div className="cart__price--subtotal-item">
                                         <h4>VAT: </h4>
-                                        <p>${(handleCalculateToTal() * 0.1).toLocaleString()} USD</p>
+                                        <p>${(handleCalculateToTal() * 0.1).toLocaleString()} VND</p>
                                     </div>
                                 </div>
                                 <div className="cart__price--info">
@@ -124,10 +124,13 @@ const Cart = ({ addCartData, cartData, addCart, getCartData }) => {
                                 </div>
                                 <div className="cart__price--total">
                                     <h4>{t("cart.Total")}</h4>
-                                    <p>${(handleCalculateToTal() * 1.1).toLocaleString()} USD</p>
+                                    <p>${(handleCalculateToTal() * 1.1).toLocaleString()} VND</p>
                                 </div>
                                 <div className="cart__price--button">
-                                    <button className="button button-round--lg button-primary">
+                                    <button
+                                        className="button button-round--lg button-primary"
+                                        onClick={() => history.push("/infoPayment")}
+                                    >
                                         {t("cart.Checkout")}
                                     </button>
                                 </div>

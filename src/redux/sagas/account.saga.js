@@ -17,7 +17,7 @@ import {
     EDIT_PROFILE_SUCCESS,
     GET_INFO,
     GET_INFO_FAIL,
-    GET_INFO_SUCCESS
+    GET_INFO_SUCCESS,
 } from "../constants";
 const apiURL = process.env.REACT_APP_API_URL;
 function* createAccountSaga(action) {
@@ -94,7 +94,7 @@ function* createAccountSaga(action) {
 function* getInfoSaga(action) {
     try {
         const { email } = action.payload;
-        const response = yield axios.get(`${apiURL}/userList?email=${email}`)
+        const response = yield axios.get(`${apiURL}/userList?email=${email}`);
         const data = response.data[0];
         yield put({
             type: GET_INFO_SUCCESS,
@@ -180,7 +180,11 @@ function* editProfileSaga(action) {
     try {
         const { id, first, last, password, phone, address, token } = action.payload;
         const response = yield axios.patch(`${apiURL}/userList/${id}`, {
-            last, first, phone, address, password
+            last,
+            first,
+            phone,
+            address,
+            password,
         });
         const data = response.data;
 
@@ -203,5 +207,3 @@ export default function* accountSaga() {
     yield takeEvery(EDIT_PROFILE, editProfileSaga);
     yield takeEvery(GET_INFO, getInfoSaga);
 }
-
-

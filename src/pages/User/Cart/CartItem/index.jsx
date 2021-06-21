@@ -113,7 +113,7 @@ const CartItem = ({ data, setCartData, addCart, addCartData, handleDeleteCart })
                         </p>
                     )}
 
-                    <p>${data.price.toLocaleString()} USD</p>
+                    <p>${data.price.toLocaleString()} VND</p>
                 </td>
                 <td className="cart__product--amount">
                     <div>
@@ -131,7 +131,7 @@ const CartItem = ({ data, setCartData, addCart, addCartData, handleDeleteCart })
                         </button>
                     </div>
                 </td>
-                <td className="cart__product--price">${(data.price * valueInput).toLocaleString()} USD</td>
+                <td className="cart__product--price">${(data.price * valueInput).toLocaleString()} VND</td>
                 <td className="cart__product--remove" onClick={() => modalDec(data, 0)}>
                     <FaTrash />
                 </td>
