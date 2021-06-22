@@ -25,7 +25,7 @@ function* getProductDetailSaga(action) {
         const [response, responseNew] = yield all([
             axios({
                 method: "GET",
-                url: `${apiURL}/productDetail?productId=${productId}`,
+                url: `${apiURL}/products?id=${productId}`,
             }),
             axios({
                 method: "GET",
