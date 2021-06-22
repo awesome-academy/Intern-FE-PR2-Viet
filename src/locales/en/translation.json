@@ -253,7 +253,11 @@
             "first": "First Name",
             "last": "Last Name",
             "cancel": "Cancel",
-            "save": "Save"
+            "save": "Save",
+            "password": "Password",
+            "role": "Role",
+            "user": "User",
+            "admin": "Admin"
         }
     },
     "orderHistory": {
@@ -329,5 +333,19 @@
         "Products purchased": "Products purchased",
         "amount": "Amount",
         "return to home page": "return to home page"
+    },
+    "admin": {
+        "listUser": {
+            "title": "LIST USER"
+        },
+        "listProduct": {
+            "title": "LIST PRODUCT"
+        },
+        "table": {
+            "name": "NAME",
+            "address": "ADDRESS",
+            "phone": "PHONE",
+            "action": "ACTION"
+        }
     }
 }

@@ -10,6 +10,8 @@ import Home from "./pages/User/Home";
 import DefaultLayout from "./layouts/DefaultLayout";
 import PaymentLayout from "./layouts/PaymentLayout";
 import ProductDetail from "./pages/User/ProductDetail";
+import PrivateLayout from "./layouts/PrivateLayout";
+
 import Login from "./pages/User/Login";
 import Register from "./pages/User/Register";
 import Products from "./pages/User/Products";
@@ -19,6 +21,9 @@ import Profile from "./pages/User/Profile";
 import Shipping from "./pages/User/Payment/Shipping";
 import Payment from "./pages/User/Payment/Payment";
 import Success from "./pages/User/Success";
+
+import ListUser from "./pages/Admin/ListUser";
+import HomeAdmin from "./pages/Admin/HomeAdmin";
 
 function App() {
     return (
@@ -37,6 +42,8 @@ function App() {
                     <PaymentLayout exact path="/infoPayment" component={Information} />
                     <PaymentLayout exact path="/shipping" component={Shipping} />
                     <PaymentLayout exact path="/payment" component={Payment} />
+                    <PrivateLayout exact path="/admin/listUser" component={ListUser} />
+                    <PrivateLayout exact path="/admin" component={HomeAdmin} />
                 </Switch>
             </Router>
         </div>

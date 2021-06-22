@@ -7,14 +7,26 @@ import {
     EDIT_PROFILE_SUCCESS,
     GET_INFO_FAIL,
     GET_INFO_SUCCESS,
-} from "../constants";
+    GET_LIST_USER_FAIL,
+    GET_LIST_USER_SUCCESS,
+    CREATE_USER_BY_ADMIN_FAIL,
+    CREATE_USER_BY_ADMIN_SUCCESS,
+    DELETE_USER_FAIL,
+    DELETE_USER_SUCCESS,
+    EDIT_USER_FAIL,
+    EDIT_USER_SUCCESS
+} from '../constants';
 
 const initialStore = {
     userList: [],
     user: {},
     userDataEdited: {},
     infoUser: {},
-};
+    listUser: [],
+    adminCreate: {},
+    deleteUser: [],
+    userEdit: {},
+}
 
 export default function accountReducer(state = initialStore, action) {
     switch (action.type) {
@@ -56,12 +68,56 @@ export default function accountReducer(state = initialStore, action) {
                 },
             };
         }
+
         case EDIT_PROFILE_FAIL: {
             return state;
         }
-
+        case GET_LIST_USER_SUCCESS: {
+            return {
+                ...state,
+                listUser: [
+                    ...action.payload,
+                ]
+            }
+        }
+        case GET_LIST_USER_FAIL: {
+            return state
+        }
+        case CREATE_USER_BY_ADMIN_SUCCESS: {
+            return {
+                ...state,
+                adminCreate: {
+                    ...action.payload
+                }
+            }
+        }
+        case CREATE_USER_BY_ADMIN_FAIL: {
+            return state
+        }
+        case DELETE_USER_SUCCESS: {
+            return {
+                ...state,
+                adminCreate: [
+                    ...action.payload
+                ]
+            }
+        }
+        case DELETE_USER_FAIL: {
+            return state
+        }
+        case EDIT_USER_SUCCESS: {
+            return {
+                ...state,
+                userEdit: {
+                    ...action.payload
+                }
+            }
+        }
+        case EDIT_USER_FAIL: {
+            return state
+        }
         default: {
-            return state;
+            return state
         }
     }
 }

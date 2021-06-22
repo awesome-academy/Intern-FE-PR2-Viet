@@ -412,7 +412,7 @@ function Profile(prop) {
                                                     })}
                                                     <div className="btn-profile">
                                                         <Button
-                                                            htmlType={editable === true ? "reset" : ""}
+                                                            htmlType="reset"
                                                             onClick={() => {
                                                                 setEditable(!editable);
                                                             }}

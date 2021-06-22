@@ -250,7 +250,11 @@
             "first": "Tên",
             "last": "Họ",
             "cancel": "Đóng",
-            "save": "Lưu"
+            "save": "Lưu",
+            "password": "Mật khẩu",
+            "role": "Quyền",
+            "user": "Người dùng",
+            "admin": "Quản trị viên"
         }
     },
     "orderHistory": {
@@ -326,5 +330,13 @@
         "Products purchased": "Sản phẩm đã mua",
         "amount": "Số lượng",
         "return to home page": "Về trang chủ"
+    },
+    "admin": {
+        "listUser": {
+            "title": "DANH SÁCH NGƯỜI DÙNG"
+        },
+        "listProduct": {
+            "title": "DANH SÁCH SẢN PHẨM"
+        }
     }
 }
