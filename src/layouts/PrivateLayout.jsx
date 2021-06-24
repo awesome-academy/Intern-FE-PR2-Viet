@@ -26,7 +26,6 @@ function PrivateLayout({ component: Component, role, ...props }) {
                             <Component {...routerProps} />
                         </div>
                     </div>
-                    {/* <Footer /> */}
                 </>
             )}
         />

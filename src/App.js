@@ -8,10 +8,10 @@ import "./scss/styles.scss";
 
 import Home from "./pages/User/Home";
 import DefaultLayout from "./layouts/DefaultLayout";
-import PaymentLayout from "./layouts/PaymentLayout";
-import ProductDetail from "./pages/User/ProductDetail";
 import PrivateLayout from "./layouts/PrivateLayout";
+import PaymentLayout from "./layouts/PaymentLayout";
 
+import ProductDetail from "./pages/User/ProductDetail";
 import Login from "./pages/User/Login";
 import Register from "./pages/User/Register";
 import Products from "./pages/User/Products";
@@ -24,12 +24,15 @@ import Success from "./pages/User/Success";
 
 import ListUser from "./pages/Admin/ListUser";
 import HomeAdmin from "./pages/Admin/HomeAdmin";
+import ProductsAdmin from "./pages/Admin/ProductsAdmin";
+import AddProductAdmin from "./pages/Admin/ProductsAdmin/components/AddProduct";
 
 function App() {
     return (
         <div className="App">
             <Router history={history}>
                 <Switch>
+                    {/* USER */}
                     <DefaultLayout exact path="/" component={Home} />
                     <DefaultLayout exact path="/products" component={Products} />
                     <DefaultLayout exact path="/cart" component={Cart} />
@@ -42,8 +45,21 @@ function App() {
                     <PaymentLayout exact path="/infoPayment" component={Information} />
                     <PaymentLayout exact path="/shipping" component={Shipping} />
                     <PaymentLayout exact path="/payment" component={Payment} />
-                    <PrivateLayout exact path="/admin/listUser" component={ListUser} />
+
+                    {/* ADMIN */}
                     <PrivateLayout exact path="/admin" component={HomeAdmin} />
+                    <PrivateLayout exact path="/admin/listUser" component={ListUser} />
+                    <PrivateLayout exact path="/admin/products" component={ProductsAdmin}></PrivateLayout>
+                    <PrivateLayout
+                        exact
+                        path="/admin/products/add"
+                        component={AddProductAdmin}
+                    ></PrivateLayout>
+                    <PrivateLayout
+                        exact
+                        path="/admin/products/edit/:id"
+                        component={AddProductAdmin}
+                    ></PrivateLayout>
                 </Switch>
             </Router>
         </div>

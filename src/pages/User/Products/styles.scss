@@ -65,17 +65,21 @@
             }
         }
     }
+}
 
-    .pagination {
-        padding-top: 3rem;
-        &__result {
-            padding: 2rem 0;
-            font-weight: 500;
-        }
-        &__result,
-        .ant-pagination {
-            text-align: center;
-        }
+.pagination {
+    padding-top: 3rem;
+    width: 100%;
+    &__result {
+        padding: 2rem 0;
+        font-weight: 500;
+    }
+    &__result,
+    .ant-pagination {
+        text-align: center;
+    }
+    .ant-pagination-options {
+        display: none;
     }
 }
 

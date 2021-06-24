@@ -61,22 +61,25 @@ const ProductDetail = ({
 
     useEffect(() => {
         getProductDetail(productId);
-        getInfo(info.email);
+        getInfo(info?.email);
     }, [productId]);
+
     useEffect(() => {
         getComment({
             id: productId,
             page: current,
             limit: 10,
         });
+        // eslint-disable-next-line
     }, [listComment, current, productId]);
 
     useEffect(() => {
+        document.title = "Vegist | Trang Chi tiết";
         getBill({
-            user: info.email,
+            user: info?.email,
             isPayment: true,
         });
-    }, []);
+    }, [productId]);
     const { Panel } = Collapse;
     comments.reverse();
     function callback(key) {
@@ -128,26 +131,30 @@ const ProductDetail = ({
 
     const handleSubmitForm = (value) => {};
     const handleSubmitFormComment = (value) => {
-        if (billData.cartData.findIndex((item) => item.id == productId) !== -1) {
-            createComment({
-                ...value,
-                idUser: infoUser.id,
-                idProduct: productId,
-                name: `${infoUser.first + infoUser.last}`,
-                datetime: moment().format("YYYY-MM-DD HH:mm:ss"),
-                rate: rateValue,
-            });
-            success("Thanks for your comment !");
-            setIsShowFormComment(false);
+        if (info) {
+            if (billData?.cartData?.findIndex((item) => item.id == productId) !== -1) {
+                createComment({
+                    ...value,
+                    idUser: infoUser.id,
+                    idProduct: productId,
+                    name: `${infoUser.first + infoUser.last}`,
+                    datetime: moment().format("YYYY-MM-DD HH:mm:ss"),
+                    rate: rateValue,
+                });
+                success("Thanks for your comment !");
+                setIsShowFormComment(false);
+            } else {
+                error("You didn't bought this product ago !");
+                setIsShowFormComment(false);
+            }
         } else {
-            error("You didn't bought this product ago !");
-            setIsShowFormComment(false);
+            error("You don't login !");
         }
     };
     const renderProductDetail = () => {
         return (
             <>
-                <Row gutter={[30, 16]}>
+                <Row gutter={[30, 16]} className="fadeIn">
                     <Col md={12} sm={24} lg={12}>
                         <div className="productDetail__tabs--img">
                             <div className="productDetail__tabs--img">

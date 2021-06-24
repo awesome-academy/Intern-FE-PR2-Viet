@@ -10,18 +10,19 @@ import "react-toastify/dist/ReactToastify.css";
 import "./style.scss";
 
 const Register = (prop) => {
+    document.title = "Vegist | Trang Đăng kí";
     const { t } = useTranslation();
     const { createAccount, userList, user } = prop;
     const [form] = Form.useForm();
     const handleSubmitForm = (values) => {
         createAccount({
             ...values,
-            name: values.first +" "+ values.last,
+            name: values.first + " " + values.last,
         });
     };
     return (
         <>
-            <section className="register">
+            <section className="register fadeIn">
                 <div className="container">
                     <Row justify="center">
                         <Col md={10} sm={12} xs={24} lg={7}>

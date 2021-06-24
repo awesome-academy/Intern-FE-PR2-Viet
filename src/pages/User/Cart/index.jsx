@@ -39,7 +39,7 @@ const Cart = ({ addCartData, cartData, addCart, getCartData }) => {
     };
 
     return (
-        <div className="cart">
+        <div className="cart fadeIn">
             <Breadcrumb title="Cart" />
             <div className="container cart__container">
                 {cartData?.cartData?.length ? (

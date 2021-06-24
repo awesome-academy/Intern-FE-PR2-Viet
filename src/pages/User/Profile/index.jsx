@@ -28,6 +28,7 @@ function Profile(prop) {
     const error = (value) => toast.error(`🦄 ${value}`);
 
     useEffect(() => {
+        document.title = "Vegist | Trang Thông tin cá nhân";
         const user = JSON.parse(localStorage.getItem("profile"));
         getInfo({ email: user.email });
         getBill({
@@ -100,59 +101,11 @@ function Profile(prop) {
         },
     ];
 
-    const dataSource = [
-        {
-            key: "1",
-            name: (
-                <>
-                    <div className="name-order">
-                        <p>Mike</p>
-                        <img
-                            src="https://cdn.shopify.com/s/files/1/0412/8151/9765/products/47_590X668_crop_center.jpg?v=1595939069"
-                            alt=""
-                        />
-                    </div>
-                </>
-            ),
-            count: 32,
-            address: "10 Downing Street",
-            date: "18-06-2021",
-            price: "400.000",
-        },
-    ];
-
-    const columns = [
-        {
-            title: "Name",
-            dataIndex: "name",
-            key: "name",
-        },
-        {
-            title: "Count",
-            dataIndex: "count",
-            key: "count",
-        },
-        {
-            title: "Address",
-            dataIndex: "address",
-            key: "address",
-        },
-        {
-            title: "Date",
-            dataIndex: "date",
-            key: "date",
-        },
-        {
-            title: "Price",
-            dataIndex: "price",
-            key: "price",
-        },
-    ];
     return (
         <>
             <div className="profile__modal"></div>
 
-            <section className="profile">
+            <section className="profile fadeIn">
                 <div className="container">
                     <h2>
                         {t("Profile.welcome")} {userEdited?.first + userEdited?.last}

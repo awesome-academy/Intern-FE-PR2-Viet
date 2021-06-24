@@ -109,6 +109,33 @@
         "lastName": {
             "max": "Last name must not exceed 20 characters !",
             "required": "Last name can't be blank !"
+        },
+        "name": {
+            "max": "Name must not exceed 50 characters !",
+            "required": "Name can't be blank !"
+        },
+        "category": {
+            "required": "Product line can't be blank !"
+        },
+        "tag": {
+            "required": "Tag can't be blank !"
+        },
+        "origin": {
+            "required": "Origin can't be blank !"
+        },
+        "size": {
+            "regex": "Minimum size is 1kg, maximum 99kg !",
+            "required": "Size can't be blank !"
+        },
+        "price": {
+            "regex": "Minimum price is 10.000, maximum 99.000.000 !",
+            "required": "Price can't be blank !"
+        },
+        "image": {
+            "required": "Choose 4 pictures !"
+        },
+        "Short description": {
+            "required": "Short description can't be blank !"
         }
     },
     "home": {
@@ -346,6 +373,29 @@
             "address": "ADDRESS",
             "phone": "PHONE",
             "action": "ACTION"
+        },
+
+        "products": {
+            "More new products": "More new products",
+            "Enter product name": "Enter product name...",
+            "Product's name": "Product's name",
+            "Product Line": "Product line",
+            "Select product line": "Select product line...",
+            "Unit price": "Unit price",
+            "Enter unit price": "Enter unit price...",
+            "New price": "New price",
+            "Enter new price": "Enter new price",
+            "Size": "Size",
+            "Select...": "Select...",
+            "Origin": "Origin",
+            "Tag": "Tag",
+            "Select tag": "Select tag",
+            "Image": "Image",
+            "Short description": "Short description",
+            "Enter short description": "Enter Short description...",
+            "Describe": "Describe",
+            "Enter describe": "Enter describe...",
+            "Add new": "Add new"
         }
     }
 }

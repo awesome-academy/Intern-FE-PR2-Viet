@@ -203,3 +203,16 @@ input {
 .text-clamp--5 {
     -webkit-line-clamp: 5;
 }
+
+.fadeIn {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

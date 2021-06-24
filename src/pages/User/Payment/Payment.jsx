@@ -15,6 +15,7 @@ const Payment = ({ getBill, billData, updateBill, getCartData }) => {
     const { t } = useTranslation();
     const [billingAddress, setBillingAddress] = useState(1);
     useEffect(() => {
+        document.title = "Vegist | Trang thanh toán";
         const user = JSON.parse(localStorage.getItem("profile"));
 
         getBill({ user: user.email, isPayment: false });
@@ -35,7 +36,7 @@ const Payment = ({ getBill, billData, updateBill, getCartData }) => {
     };
 
     return (
-        <div className="payment-page">
+        <div className="payment-page fadeIn">
             <div className="container payment__container">
                 <section className="payments">
                     <h1 className="information__title">vegina-store</h1>

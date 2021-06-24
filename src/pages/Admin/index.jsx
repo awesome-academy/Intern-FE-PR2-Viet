@@ -18,7 +18,7 @@ import "./style.scss";
 const Admin = () => {
     const { SubMenu } = Menu;
     const { t } = useTranslation();
-
+    document.title = "Vegist | Trang Admin";
     const [collapsed, setCollapsed] = useState(false);
 
     const toggleCollapsed = () => {
@@ -44,7 +44,11 @@ const Admin = () => {
                     >
                         {t("admin.listUser.title")}
                     </Menu.Item>
-                    <Menu.Item key="3" icon={<ContainerOutlined />}>
+                    <Menu.Item
+                        key="3"
+                        icon={<ContainerOutlined />}
+                        onClick={() => history.push("/admin/products")}
+                    >
                         {t("admin.listProduct.title")}
                     </Menu.Item>
                     <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
@@ -62,13 +66,6 @@ const Admin = () => {
                         </SubMenu>
                     </SubMenu>
                 </Menu>
-                <Button
-                    onClick={toggleCollapsed}
-                    type="primary"
-                    style={{ marginBottom: 16, position: "absolute", left: "17.5%" }}
-                >
-                    {collapsed === false ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                </Button>
             </div>
             <ToastContainer />
         </>

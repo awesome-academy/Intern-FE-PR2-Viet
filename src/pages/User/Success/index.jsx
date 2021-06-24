@@ -12,6 +12,7 @@ const Success = ({ match, getBill, billData }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
+        document.title = "Vegist | Trang Success";
         getBill({ id: billId });
     }, []);
 
@@ -24,7 +25,7 @@ const Success = ({ match, getBill, billData }) => {
         return total;
     };
     return (
-        <section className="success">
+        <section className="success fadeIn">
             <div className="container">
                 <Row justify="center">
                     <Col lg={14} md={18} xs={24}>
